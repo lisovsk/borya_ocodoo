@@ -1,8 +1,0 @@
-Hallo
-
-Der Benutzer "%vorname% %nachname%" hat eine Auszahlung seinen Kontoguthabens beantragt.
-
-Bitte im Adminbereich überprüfen und Auszahlung vornehmen.
-
-Freundliche Grüsse
-%titel% Systemmailer

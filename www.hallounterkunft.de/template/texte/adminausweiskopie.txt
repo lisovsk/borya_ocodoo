@@ -1,0 +1,8 @@
+Hallo
+
+Der Benutzer "%vorname% %nachname%" hat eine Verifizierung beantragt und dazu eine Ausweiskopie hochgeladen.
+
+Bitte im Adminbereich überprüfen und bestätigen.
+
+Freundliche Grüsse
+%titel% Systemmailer

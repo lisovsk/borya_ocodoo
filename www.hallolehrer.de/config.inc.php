@@ -3,10 +3,16 @@
 
 //// MySQL-Zugangsdaten
 
-$dbserver = "localhost";   // Datenbank-Server
-$dbuser = "";   // Benutzername (für die MySQL-Datenbank)
-$dbpass = "";   // Passwort (für die MySQL-Datenbank)
-$dbdata = "";   // Name der Datenbank
+// $dbserver = "localhost";   // Datenbank-Server
+// $dbuser = "";   // Benutzername (für die MySQL-Datenbank)
+// $dbpass = "";   // Passwort (für die MySQL-Datenbank)
+// $dbdata = "";   // Name der Datenbank
+// $dbx="hallolehrer";   // Tabellen-Prefix (im Normalfall nicht ändern)
+
+$dbserver = "127.0.0.1:3306";   // Datenbank-Server
+$dbuser = "mysql";   // Benutzername (für die MySQL-Datenbank)
+$dbpass = "mysql";   // Passwort (für die MySQL-Datenbank)
+$dbdata = "hallolehrer";   // Name der Datenbank
 $dbx="hallolehrer";   // Tabellen-Prefix (im Normalfall nicht ändern)
 
 
@@ -15,7 +21,7 @@ $dbx="hallolehrer";   // Tabellen-Prefix (im Normalfall nicht ändern)
 $coredata['titel'] = "HalloLehrer";   // Titel der Webseite
 $coredata['subtitel'] = "Marktplatz für Lernkurse";   // Untertitel der Webseite
 $coredata['email'] = "post@patrickbrunner.com";   // E-Mail Adresse
-$coredata['url'] = "www.hallolehrer.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
+$coredata['url'] = "borya-ocodoo/www.hallolehrer.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
 $coredata['modrw'] = "ja";   // Suchmaschinenoptimierte URLs
 $coredata['user'] = "user";   // Benutzername ("user") oder realer Vor-/Nachname ("real")
 

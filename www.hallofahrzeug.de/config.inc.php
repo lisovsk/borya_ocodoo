@@ -3,11 +3,17 @@
 
 //// MySQL-Zugangsdaten
 
-$dbserver = "localhost";   // Datenbank-Server
-$dbuser = "";   // Benutzername (für die MySQL-Datenbank)
-$dbpass = "";   // Passwort (für die MySQL-Datenbank)
-$dbdata = "";   // Name der Datenbank
-$dbx="hallofahrzeug";   // Tabellen-Prefix
+// $dbserver = "localhost";   // Datenbank-Server
+// $dbuser = "";   // Benutzername (für die MySQL-Datenbank)
+// $dbpass = "";   // Passwort (für die MySQL-Datenbank)
+// $dbdata = "";   // Name der Datenbank
+// $dbx="hallofahrzeug";   // Tabellen-Prefix
+
+$dbserver = "127.0.0.1:3306";   // Datenbank-Server
+$dbuser = "mysql";   // Benutzername (für die MySQL-Datenbank)
+$dbpass = "mysql";   // Passwort (für die MySQL-Datenbank)
+$dbdata = "hallofahrzeug";   // Name der Datenbank
+$dbx="hallofahrzeug";   // Tabellen-Prefix (im Normalfall nicht ändern)
 
 
 //// Grundeinstellungen
@@ -15,7 +21,7 @@ $dbx="hallofahrzeug";   // Tabellen-Prefix
 $coredata['titel'] = "HalloFahrzeug.de";   // Titel der Webseite
 $coredata['subtitel'] = "Privates Carsharing";   // Untertitel der Webseite
 $coredata['email'] = "";   // E-Mail Adresse
-$coredata['url'] = "www.hallofahrzeug.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
+$coredata['url'] = "borya-ocodoo/www.hallofahrzeug.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
 $coredata['modrw'] = "ja";   // Suchmaschinenoptimierte URLs
 $coredata['user'] = "user";   // Benutzername ("user") oder realer Vor-/Nachname ("real")
 $coredata['anfrageablauf'] = "12";   // Zeit in Stunden, innerhalb welcher eine Buchungsanfrage bestätigt werden muss

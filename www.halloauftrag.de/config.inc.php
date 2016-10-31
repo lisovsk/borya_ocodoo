@@ -15,7 +15,7 @@ $dbx="halloauftrag";   // Tabellen-Prefix (im Normalfall nicht ändern)
 $coredata['titel'] = "HalloAuftrag";   // Titel der Webseite
 $coredata['subtitel'] = "Gute Arbeit. Guter Preis.";   // Untertitel der Webseite
 $coredata['email'] = "";   // E-Mail Adresse
-$coredata['url'] = "www.halloauftrag.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
+$coredata['url'] = "borya-ocodoo/www.halloauftrag.de"; // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
 $coredata['modrw'] = "ja";   // Suchmaschinenoptimierte URLs
 $coredata['user'] = "user";   // Benutzername ("user") oder realer Vor-/Nachname ("real")
 

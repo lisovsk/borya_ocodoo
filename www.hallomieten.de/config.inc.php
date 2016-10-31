@@ -3,11 +3,17 @@
 
 //// MySQL-Zugangsdaten
 
-$dbserver = "localhost";   // Datenbank-Server
-$dbuser = "";   // Benutzername (für die MySQL-Datenbank)
-$dbpass = "";   // Passwort (für die MySQL-Datenbank)
-$dbdata = "";   // Name der Datenbank
-$dbx="hallomieten";   // Tabellen-Prefix
+// $dbserver = "localhost";   // Datenbank-Server
+// $dbuser = "";   // Benutzername (für die MySQL-Datenbank)
+// $dbpass = "";   // Passwort (für die MySQL-Datenbank)
+// $dbdata = "";   // Name der Datenbank
+// $dbx="hallomieten";   // Tabellen-Prefix
+
+$dbserver = "127.0.0.1:3306";   // Datenbank-Server
+$dbuser = "mysql";   // Benutzername (für die MySQL-Datenbank)
+$dbpass = "mysql";   // Passwort (für die MySQL-Datenbank)
+$dbdata = "hallomieten";   // Name der Datenbank
+$dbx="hallogegenstand";   // Tabellen-Prefix (im Normalfall nicht ändern)
 
 
 //// Grundeinstellungen
@@ -15,7 +21,7 @@ $dbx="hallomieten";   // Tabellen-Prefix
 $coredata['titel'] = "HalloMieten.de";   // Titel der Webseite
 $coredata['subtitel'] = "Ausleihen statt kaufen";   // Untertitel der Webseite
 $coredata['email'] = "post@patrickbrunner.com";   // E-Mail Adresse
-$coredata['url'] = "www.hallomieten.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
+$coredata['url'] = "borya-ocodoo/www.hallomieten.de";   // URL zur Webseite (wichtig: kein "/" am Schluss und ohne "http://")
 $coredata['modrw'] = "ja";   // Suchmaschinenoptimierte URLs
 $coredata['user'] = "user";   // Benutzername ("user") oder realer Vor-/Nachname ("real")
 

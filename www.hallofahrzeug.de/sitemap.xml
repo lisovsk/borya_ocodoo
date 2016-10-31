@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-        <loc>http://localhost/aa/caralio</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de</loc>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 <url>
-        <loc>http://localhost/aa/caralio/suchen</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de/suchen</loc>
         <priority>0.9</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 <url>
-        <loc>http://localhost/aa/caralio/vermieten</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de/vermieten</loc>
         <priority>0.5</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 <url>
-        <loc>http://localhost/aa/caralio/faq</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de/faq</loc>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 <url>
-        <loc>http://localhost/aa/caralio/anmelden</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de/anmelden</loc>
         <priority>0.5</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 <url>
-        <loc>http://localhost/aa/caralio/impressum</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de/impressum</loc>
         <priority>0.5</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 <url>
-        <loc>http://localhost/aa/caralio/nutzungsbedingungen</loc>
+        <loc>http://borya-ocodoo/www.hallofahrzeug.de/nutzungsbedingungen</loc>
         <priority>0.5</priority>
         <changefreq>weekly</changefreq>
-        <lastmod>2014-01-21</lastmod>
+        <lastmod>2016-10-31</lastmod>
 </url>
 </urlset>

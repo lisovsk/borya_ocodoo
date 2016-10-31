@@ -1,4 +1,4 @@
-﻿CREATE TABLE `hallofahrzeug_auszahlung` (
+CREATE TABLE `hallofahrzeug_auszahlung` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user` bigint(20) NOT NULL,
   `betrag` float NOT NULL,
