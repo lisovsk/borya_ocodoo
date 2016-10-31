@@ -1,0 +1,17 @@
+﻿Hallo %vorname% %nachname%
+
+Die Angebotsphase Ihres bei %titel% ausgeschriebenen Auftrags ist beendet.
+
+%auftragtitel%
+%auftragurl%
+
+Bitte wählen Sie einen Anbieter aus, welchem Sie den Auftrag vergeben möchten:
+
+%auswahlurl%
+
+Wir wünschen viel Spass und Erfolg bei der Auftragvergabe!
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

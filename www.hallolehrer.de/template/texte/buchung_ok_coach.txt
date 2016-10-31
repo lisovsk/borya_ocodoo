@@ -1,0 +1,15 @@
+Hallo %vorname% %nachname%
+
+Glückwunsch! Ihr folgender Kurs wurde gebucht:
+
+%kurstitel%
+%kursurl%
+
+Bitte kontaktieren Sie den Teilnehmer für weitere Details:
+
+%teilnehmerdetails%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

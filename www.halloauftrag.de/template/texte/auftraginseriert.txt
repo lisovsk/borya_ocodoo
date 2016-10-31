@@ -1,0 +1,15 @@
+﻿Hallo %vorname% %nachname%
+
+Vielen Dank, dass Sie Ihren Auftrag bei %titel% ausgeschrieben haben.
+
+Hier finden Sie den Link zu Ihrem Inserat, welchen Sie z.B. auch auf Ihrer Webseite, Facebook-Profil o.ä. veröffentlichen können:
+
+%auftragtitel%
+%auftragurl%
+
+Wir wünschen viel Spass und Erfolg bei der Auftragvergabe!
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

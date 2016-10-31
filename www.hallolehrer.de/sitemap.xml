@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+        <loc>http://localhost/aa/hallolehrer</loc>
+        <priority>1.0</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/suchen</loc>
+        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/vermieten</loc>
+        <priority>0.5</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/faq</loc>
+        <priority>0.8</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/anmelden</loc>
+        <priority>0.5</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/impressum</loc>
+        <priority>0.5</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/nutzungsbedingungen</loc>
+        <priority>0.5</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/auftrag/4/Billard-stunden</loc>
+        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+<url>
+        <loc>http://localhost/aa/hallolehrer/auftrag/1/Ein-koestliches-2Gang-Menue-kochen</loc>
+        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+        <lastmod>2014-08-25</lastmod>
+</url>
+</urlset>

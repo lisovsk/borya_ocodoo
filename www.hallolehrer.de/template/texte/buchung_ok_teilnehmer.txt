@@ -1,0 +1,15 @@
+Hallo %vorname% %nachname%
+
+Vielen Dank für die Buchung des folgenden Kurses:
+
+%kurstitel%
+%kursurl%
+
+Bitte kontaktieren Sie den Coach für weitere Details:
+
+%coachdetails%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

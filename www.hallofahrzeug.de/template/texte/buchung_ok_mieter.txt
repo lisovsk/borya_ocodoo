@@ -1,0 +1,21 @@
+Hallo %vorname% %nachname%
+
+Der Vermieter hat Ihre Buchungsanfrage bestätigt.
+
+%fahrzeugtitel%
+%fahrzeugadresse%
+
+Anzahl Tage: %mietdauer%
+Zeitraum: %mietzeitraum%
+
+Preis pro Tag: %preistag% Euro
+Preis total: %preistotal% Euro
+
+Bitte kontaktieren Sie den Vermieter für weitere Details:
+
+%vermieterdetails%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

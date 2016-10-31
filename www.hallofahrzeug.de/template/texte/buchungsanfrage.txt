@@ -1,0 +1,23 @@
+Hallo %vorname% %nachname%
+
+Ein Mieter interessiert sich für Ihr Fahrzeug und möchte diese gerne wie folgt buchen:
+
+%fahrzeugtitel%
+%fahrzeugadresse%
+
+Anzahl Nächte: %mietdauer% Tage
+Zeitraum: %mietzeitraum%
+
+Preis pro Tag: %preistag% Euro
+Preis total: %preistotal% Euro
+
+Bitte bestätgen Sie die Buchung unter folgendem Link innerhalb der nächsten 12 Stunden oder lehnen Sie diese ab, damit der reservierte Zeitraum wieder für andere Gäste zur Verfügung steht. Falls die Bestätigung innerhalb dieser Zeit ausbleibt, wird die Anfrage automatisch abgelehnt.
+
+%besurl%
+
+Wir wünschen viel Spass und Erfolg bei der Vermietung!
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

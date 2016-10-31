@@ -1,0 +1,15 @@
+Hallo %vorname% %nachname%
+
+Sie haben folgenden Auftrag erfolgreich vergeben:
+
+%auftragtitel%
+%auftragurl%
+
+Bitte kontaktieren Sie den Auftragnehmer für weitere Details:
+
+%auftragnehmerdetails%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

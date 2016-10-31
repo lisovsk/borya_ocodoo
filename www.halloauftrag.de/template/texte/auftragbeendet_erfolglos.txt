@@ -1,0 +1,15 @@
+﻿Hallo %vorname% %nachname%
+
+Die Angebotsphase Ihres bei %titel% ausgeschriebenen Auftrags ist beendet.
+
+%auftragtitel%
+%auftragurl%
+
+Leider wurden keine Angebote abgegeben.
+
+Möglicherweise war die Auftragsbeschreibung zu ungenau oder zu spezifisch. Sie können jedoch gerne jederzeit den Auftrag neu ausschreiben, vielleicht haben Sie mit einer etwas angepassten Auftragsbeschreibung mehr Glück.
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

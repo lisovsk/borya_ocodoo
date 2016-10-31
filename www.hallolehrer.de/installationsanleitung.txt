@@ -1,0 +1,11 @@
+﻿
+Folgende Schritte sind für die Installation notwendig:
+
+- ZIP-Paket entpacken und Dateien auf Server laden
+- Schreibrechte für Verzeichnisse: "__TEMP__", "avatar" und "fotos"
+- Datenbank mit den *.sql-Dateien einrichten
+- Verzeichnis "admin" mit Passwort schützen
+- Zugang zum Adminbereich über www.IHRE-DOMAIN.COM/admin/index.php
+- Facebook-App erstellen (https://developers.facebook.com/apps)
+- Grundeinstellungen und MySQL-Daten in config.inc.php bearbeiten
+- PayPal- und Sofortüberweisung.de-Daten in config.inc.php eintragen

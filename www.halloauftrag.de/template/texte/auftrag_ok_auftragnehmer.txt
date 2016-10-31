@@ -1,0 +1,15 @@
+Hallo %vorname% %nachname%
+
+Glückwunsch! Sie haben folgenden Auftrag erhalten:
+
+%auftragtitel%
+%auftragurl%
+
+Bitte kontaktieren Sie den Auftraggeber für weitere Details:
+
+%auftraggeberdetails%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

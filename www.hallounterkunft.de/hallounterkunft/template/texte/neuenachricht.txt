@@ -1,0 +1,11 @@
+Hallo %vorname% %nachname%
+
+Sie haben eine neue Nachricht erhalten.
+Klicke auf folgenden Link, um diese zu lesen:
+
+%readlink%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

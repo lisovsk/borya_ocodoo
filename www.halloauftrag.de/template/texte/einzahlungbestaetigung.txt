@@ -1,0 +1,8 @@
+﻿Hallo %vorname% %nachname%
+
+Vielen Dank für die Einzahlung. Der Betrag in Höhe von %betrag%,00 Euro wurde Ihrem Konto soeben gutgeschrieben.
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

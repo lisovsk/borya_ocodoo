@@ -1,0 +1,12 @@
+Hallo %vorname% %nachname%
+
+Herzlich willkommen bei %titel%!
+
+Mit dem folgenden Passwort können Sie sich ab sofort unter %url% einloggen:
+
+Passwort: %benutzerpasswort%
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

@@ -1,0 +1,15 @@
+Hallo %vorname% %nachname%
+
+Vielen Dank, dass Sie einen Kurs bei %titel% eingetragen haben.
+
+Hier finden Sie den Link zu Ihrem Angebot, welchen Sie z.B. auch auf Ihrer Webseite, Facebook-Profil o.ä. veröffentlichen können:
+
+%kurstitel%
+%kursurl%
+
+Wir wünschen viel Spass und Erfolg bei der Kursdurchführung!
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%

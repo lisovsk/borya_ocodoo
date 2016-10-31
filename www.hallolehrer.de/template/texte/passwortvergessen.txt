@@ -1,0 +1,12 @@
+Hallo %vorname% %nachname%
+
+Sie haben angegeben, Ihr Passwort vergessen zu haben. Kein Problem, hier erhalten Sie ein neues Passwort.
+
+Passwort: %pass%
+
+Sie können das Passwort jederzeit in den Einstellungen ändern.
+
+Bei Fragen und Problemen stehen wir gerne zur Verfügung.
+
+Freundliche Grüsse
+%titel%
