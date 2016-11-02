@@ -1,0 +1,44 @@
+﻿.logo {
+	margin-left: 100px;
+	margin-top: 25px;
+	margin-bottom: 50px;
+}
+.wr-form {
+	width: 230px;
+	margin: auto;
+}
+.form-control-w {
+	width: 100%;
+	background: #f2f2f2;
+	border-radius: 0;
+}
+.wr-form__text-l {
+	margin-bottom: 40px;
+}
+.form__text-l {
+	color: #676767;
+	font-size: 20px;
+}
+.form__text-l-white {
+	color: #fefefe;
+}
+.btn {
+	background: #666666;
+	border-radius: 4px;
+	margin-bottom: 25px;
+}
+.form__label {
+	color: #8f8f8f;
+	font-weight: 300;
+	font-size: 16px;
+}
+.wr-inp {
+	margin-bottom: 25px;
+}
+@media only screen and (max-width: 768px) {
+	.logo {
+		margin-left: auto;
+		margin-right: auto;
+		width: 260px;
+	}
+}
