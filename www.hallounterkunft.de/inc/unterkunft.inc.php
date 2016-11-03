@@ -312,15 +312,41 @@ echo '<div style="margin-bottom:30px;"><form action=index.php method=post><input
 
 <br><div style="padding:5px;background-color:#eee;margin-bottom:5px;" class=smallroundcorners><b>Buchungsanfrage</b></div>
 
-<div class="col-5" style="padding:0px !important;margin-top:9px;"><b>Check-In:</b></div>
-<div class="col-7" style="padding:0px !important;"><div class=input-group><span class="input-group-addon"><img src=images/ico_datum.png width=16 height=16></span><input type="text" name="datumvon" id="datumvon" value="'.$dateMorgen.'" class=form-control></div></div>
+<div class="col-5" style="padding:15px 0px; !important;"><b>Your stay time:</b></div>
+<div class="col-12" style="padding:0px !important;"><div class=input-group><span class="input-group-addon"><img src=images/ico_datum.png width=16 height=16></span><input style="font-weight: bold;" type="text" name="daterange" value="'.$dateMorgen. ' - ' .$dateDreiTage.'" class="form-control js-daterange" /></div></div>
+</div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<input type="hidden" name="datumvon" id="datumvon" value="'.$dateMorgen.'" class=form-control>
+<input type="hidden" name="datumbis" id="datumbis" value="'.$dateDreiTage.'" class=form-control>
+<script type="text/javascript">
+var today = moment();
+$(function() {
+    $(\'input[name="daterange"]\').daterangepicker({
+    "startDate": "'.$dateMorgen.'",
+    "endDate": "'.$dateDreiTage.'",
+    "minDate": "'.$dateMorgen.'",
+    "maxDate": moment(today).add(1, "year"),
+    "locale": {
+      format: "DD.MM.YYYY"
+    }
+});
+});
+$(".js-daterange").on("change", function () {
+  var dateFirst, dateSecond, daterangeStr, daterangeArr;
+  daterangeStr = $(this).val();
+  daterangeArr = daterangeStr.match(/\d\d.\d\d.\d\d\d\d/g);
+  dateFirst = daterangeArr[0];
+  dateSecond = daterangeArr[1];
+  $("#datumvon").val(dateFirst);
+  $("#datumbis").val(dateSecond);
+})
+</script>
 
-</div><div class=row style="margin:0px !important;padding-bottom:5px;padding-top:5px;border-bottom:1px dotted #bbb;">
 
-<div class="col-5" style="padding:0px !important;margin-top:9px;"><b>Check-Out:</b></div>
-<div class="col-7" style="padding:0px !important;"><div class=input-group><span class="input-group-addon"><img src=images/ico_datum.png width=16 height=16></span><input type="text" name="datumbis" id="datumbis" value="'.$dateDreiTage.'" class=form-control></div></div>
-
-</div><div class=row style="margin:0px !important;padding-bottom:5px;padding-top:5px;border-bottom:1px dotted #bbb;">
+<div class=row style="margin:0px !important;padding-bottom:5px;padding-top:5px;border-bottom:1px dotted #bbb;">
 
 <div class="col-5" style="padding:0px !important;margin-top:9px;"><b>Gäste:</b></div>
 <div class="col-7" style="padding:0px !important;"><div class=input-group><span class="input-group-addon"><img src=images/ico_users.png width=16 height=16></span><select name="anzgaeste" id="anzgaeste" class=form-control>

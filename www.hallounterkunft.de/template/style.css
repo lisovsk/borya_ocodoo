@@ -352,3 +352,14 @@ margin: 0 1px;
 height: 2px
 }
 
+/*===== custom daterangepicker =====*/
+body .daterangepicker.opensright:before {
+	left: 95%;
+}
+body .daterangepicker.opensright:after {
+	left: calc(95% + 1px);
+}
+.daterangepicker.dropdown-menu {
+	right: 205px !important;
+	left: 525px !important;
+}
