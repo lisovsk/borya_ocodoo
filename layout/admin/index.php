@@ -29,7 +29,7 @@
 
 			<input type="submit" value="Login" class="btn btn-default form-control-w form__text-l form__text-l-white">
 		</form>
-		<a href="index.php?d=passwort">Passwort vergessen?</a>
+		<a href="index.php?d=passwort">Forgot Password?</a>
 	</div>
 </body>
 </html>

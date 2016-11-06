@@ -1,5 +1,8 @@
-<?php
+<?
+include("core.class.inc.php");
 
+mysql_connect("$dbserver","$dbuser","$dbpass");
+mysql_select_db($dbdata);
 
 
 $art=htmlspecialchars(stripslashes($_POST[art]));
@@ -112,78 +115,12 @@ $pageTitel = 'Unterkünfte';
 if($ortName!="") $pageTitel .= ' in '.$ortName;
 else $pageTitel .= ' suchen';
 if($dt[land]!="DE" && $dt[land]!="") $pageTitel .= ', '.countrycode($dt[land]);
-echo '<legend>'.$pageTitel.'</legend>';
 $DO_TITEL=$pageTitel;
 
 
 
 
-echo '<div class="row">';
-echo '<div class="col-lg-4 col-sm-5">
-
-<form action="index.php" method="get" class="form-horizontal js-get-param"><input type="hidden" name="d" value="suchen">
-
-<div style="margin-bottom:10px;">
-<div class=input-group><span class=input-group-addon><img src=images/ico_marker.png width=16 height=16 align=absmiddle></span>
-<input type="text" name="ort" class="form-control" placeholder="Wo soll es hingehen?" style="font-size:18px;font-weight:bold;" value="'.$ortName.'">
-</div>
-</div>
-
-<div style="margin-bottom:10px;">
-<div class=input-group><span class=input-group-addon><img src=images/ico_umkreis.png width=16 height=16 align=absmiddle></span>
-<div class="form-control">
-und im Umkreis von <select name=umkreis>
-<option'; if($ortdis==0) echo ' selected'; echo '>0
-<option'; if($ortdis==5 || $ortdis=="") echo ' selected'; echo '>5
-<option'; if($ortdis==10) echo ' selected'; echo '>10
-<option'; if($ortdis==25) echo ' selected'; echo '>25
-<option'; if($ortdis==50) echo ' selected'; echo '>50
-</select> km
-</div>
-</div>
-</div>
-
-<div style="margin-bottom:10px;">
-<div class=input-group><span class=input-group-addon><img src=images/ico_unterkunft.png width=16 height=16 align=absmiddle></span>
-<select name="art" class="form-control" style="padding-left:8px;">
-<option value="">Alle Unterkunftsarten</option>';
-
-$getArten = mysql_query("SELECT * FROM ".$dbx."_data_art ORDER BY id");
-while($fetchArt = mysql_fetch_array($getArten)) {
-echo '<option value="'.$fetchArt[id].'"'; if($art==$fetchArt[id]) echo ' selected'; echo '>'.$fetchArt[art].'</option>';
-}
-
-echo '</select>
-</div>
-</div>
-
-<div style="margin-bottom:10px;">
-<div class=input-group><span class=input-group-addon><img src=images/ico_users.png width=16 height=16 align=absmiddle></span>
-<select name="anzgaeste" class="form-control" style="padding-left:8px;">
-<option value=1'; if($anzgaeste==1) echo ' selected'; echo '>1 Gast</option>
-<option value=2'; if($anzgaeste==2 || $anzgaeste=="") echo ' selected'; echo '>2 Gäste</option>
-<option value=3'; if($anzgaeste==3) echo ' selected'; echo '>3 Gäste</option>
-<option value=4'; if($anzgaeste==4) echo ' selected'; echo '>4 Gäste</option>
-<option value=5'; if($anzgaeste==5) echo ' selected'; echo '>5 Gäste</option>
-<option value=6'; if($anzgaeste==6) echo ' selected'; echo '>6 Gäste</option>
-<option value=7'; if($anzgaeste==7) echo ' selected'; echo '>7 Gäste</option>
-<option value=8'; if($anzgaeste==8) echo ' selected'; echo '>8 Gäste</option>
-<option value=9'; if($anzgaeste==9) echo ' selected'; echo '>9 Gäste</option>
-<option value=10'; if($anzgaeste==10) echo ' selected'; echo '>10 Gäste</option>
-<option value=11'; if($anzgaeste==11) echo ' selected'; echo '>11 Gäste</option>
-<option value=12'; if($anzgaeste==12) echo ' selected'; echo '>12 Gäste</option>
-<option value=13'; if($anzgaeste==13) echo ' selected'; echo '>13 Gäste</option>
-<option value=14'; if($anzgaeste==14) echo ' selected'; echo '>14 Gäste</option>
-<option value=15'; if($anzgaeste==15) echo ' selected'; echo '>15+ Gäste</option>
-</select>
-</div>
-</div>
-
-
-
-
-
-
+echo '
 <script>
 '; if($coredata['waehrung']=="EUR") $waehrung = '€'; else $waehrung = $coredata['waehrung']; echo '
 $(function() {
@@ -197,6 +134,8 @@ $(function() {
             $( "#preismin" ).val( ui.values[ 0 ]);
             $( "#preismax" ).val( ui.values[ 1 ]);
             $( "#preisbereich" ).val( ui.values[ 0 ] + " '.$waehrung.' bis " + ui.values[ 1 ] + " '.$waehrung.'" );
+            // changeStrGet( $( "#preismin" ) );
+            // changeStrGet( $( "#preismax" ) );
         }
     });
     $( "#preismin" ).val($( "#slider-preis" ).slider( "values", 0 ));
@@ -214,6 +153,8 @@ $(function() {
             $( "#schlafzimmermin" ).val( ui.values[ 0 ]);
             $( "#schlafzimmermax" ).val( ui.values[ 1 ]);
             $( "#schlafbereich" ).val( ui.values[ 0 ] + " bis " + ui.values[ 1 ] );
+            // changeStrGet( $( "#schlafzimmermin" ) );
+            // changeStrGet( $( "#schlafzimmermax" ) );
         }
     });
     $( "#schlafbereich" ).val( $( "#slider-schlafzimmer" ).slider( "values", 0 ) + " bis " + $( "#slider-schlafzimmer" ).slider( "values", 1 ) );
@@ -229,6 +170,8 @@ $(function() {
             $( "#badezimmermin" ).val( ui.values[ 0 ]);
             $( "#badezimmermax" ).val( ui.values[ 1 ]);
             $( "#badezimmerbereich" ).val( ui.values[ 0 ] + " bis " + ui.values[ 1 ] );
+            // changeStrGet( $( "#badezimmermin" ) );
+            // changeStrGet( $( "#badezimmermax" ) );
         }
     });
     $( "#badezimmerbereich" ).val( $( "#slider-badezimmer" ).slider( "values", 0 ) + " bis " + $( "#slider-badezimmer" ).slider( "values", 1 ) );
@@ -245,68 +188,19 @@ $(function() {
             $( "#groessemin" ).val( ui.values[ 0 ]);
             $( "#groessemax" ).val( ui.values[ 1 ]);
             $( "#groessebereich" ).val( ui.values[ 0 ] + " bis " + ui.values[ 1 ] + " m2" );
+            // changeStrGet( $( "#groessemin" ) );
+            // changeStrGet( $( "#groessemax" ) );
         }
     });
     $( "#groessebereich" ).val( $( "#slider-groesse" ).slider( "values", 0 ) + " bis " + $( "#slider-groesse" ).slider( "values", 1 ) + " m2" );
 });
 </script>
-
-<div style="margin-bottom:10px;margin-left:9px;margin-right:8px;">
-<label for="preisbereich" style="width:120px;">Preis pro Nacht:</label>
-<input type="text" id="preisbereich" style="width:150px;border: 0; color: #f6931f; font-weight: bold; text-align:right;">
-<input type="hidden" class="slider-handle-c" id="preismin" name="preismin" value='.$preismin.'>
-<input type="hidden" class="slider-handle-c" id="preismax" name="preismax" value='.$preismax.'>
-<div id="slider-preis"></div>
-</div>
-
-<div style="margin-bottom:10px;margin-left:9px;margin-right:8px;">
-<label for="schlafbereich" style="width:120px;">Schlafzimmer:</label>
-<input type="text" id="schlafbereich" style="width:150px;border: 0; color: #f6931f; font-weight: bold; text-align:right;">
-<input type="hidden" class="slider-handle-c" id="schlafzimmermin" name="schlafzimmermin" value='.$schlafzimmermin.'>
-<input type="hidden" class="slider-handle-c" id="schlafzimmermax" name="schlafzimmermax" value='.$schlafzimmermax.'>
-<div id="slider-schlafzimmer"></div>
-</div>
-
-<div style="margin-bottom:10px;margin-left:9px;margin-right:8px;">
-<label for="badezimmerbereich" style="width:120px;">Badezimmer:</label>
-<input type="text" id="badezimmerbereich" style="width:150px;border: 0; color: #f6931f; font-weight: bold; text-align:right;">
-<input type="hidden" class="slider-handle-c" id="badezimmermin" name="badezimmermin" value='.$badezimmermin.'>
-<input type="hidden" class="slider-handle-c" id="badezimmermax" name="badezimmermax" value='.$badezimmermax.'>
-<div id="slider-badezimmer"></div>
-</div>
-
-<div style="margin-bottom:20px;margin-left:9px;margin-right:8px;">
-<label for="groessebereich" style="width:120px;">Fläche:</label>
-<input type="text" id="groessebereich" style="width:150px;border: 0; color: #f6931f; font-weight: bold; text-align:right;">
-<input type="hidden" class="slider-handle-c" id="groessemin" name="groessemin" value='.$groessemin.'>
-<input type="hidden" class="slider-handle-c" id="groessemax" name="groessemax" value='.$groessemax.'>
-<div id="slider-groesse"></div>
-</div>
-
-
-
-<div style="margin-bottom:30px;">
-</div>
-
-</form>
-
-
-
-
-
-
-</div>
-<div class="js-ajax-data">
 <div class="col-lg-8 col-sm-7 js-mouseup">';
-
-
-
 $limiter=8;
 $seite=$_GET[seite];
 if(!$seite || $seite==0) $sza=0;
 else $sza = $seite * $limiter;
 $acc=0;
-
 $getukcounter = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql);
 $ukcounter=mysql_num_rows($getukcounter);
 $getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",".$limiter);
@@ -368,8 +262,8 @@ echo '<table class="table table-hover"><thead><tr><td colspan=3><style>
 while($unterkunft=mysql_fetch_array($getuk)) {
 echo '<tr><td><div class="row"><div class="col-lg-3 col-sm-4 col-6" style="margin-right:-15px;"><div style="max-width:260px;max-height:100px;overflow:hidden;box-shadow: 2px 2px 2px #ddd;" class="bigroundcorners"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">';
 
-if(file_exists("fotos/".$unterkunft[id]."_1_t.jpg")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.jpg" border=0 style="width:100%;">';
-elseif(file_exists("fotos/".$unterkunft[id]."_1_t.png")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.png" border=0 style="width:100%;">';
+if(file_exists("../../fotos/".$unterkunft[id]."_1_t.jpg")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.jpg" border=0 style="width:100%;">';
+elseif(file_exists("../../fotos/".$unterkunft[id]."_1_t.png")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.png" border=0 style="width:100%;">';
 
 else echo '<img src="fotos/leer.gif" border=0 style="width:100%;">';
 echo '</a></div></div><div class="col-lg-7 col-sm-5 col-6">
@@ -444,77 +338,3 @@ echo "</ul></div>";
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo '</div>';
-echo '</div>';
-
-?>
-<script>
-// var changeStrGet = debounce(, 250);
-function changeStrGet (targetElem) {
-    var name = $(targetElem).attr("name"),
-    regExpRep = new RegExp(name + "=" + "[^&]*"),
-    value = $(targetElem).val();
-    strGet = strGet.replace(regExpRep, name + "=" + value);
-    console.log(strGet);
-
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = function(){
-            if (req.readyState != 4) return;
-            var responseText = String(req.responseText);
-            $('.js-ajax-data').html(responseText);
-        };
-    req.open("GET", "inc/inc-suchen/search-response.inc.php" + strGet, true);
-    req.send(null);
-}
-    var strGet = "";
-    var input = $(".js-get-param [name], [name=order]").filter( ':input' );
-    input.each(function( index ) {
-        var name = $( this ).attr("name");
-        var value = $( this ).val();
-        strGet += name + "=" + value + "&"; 
-    });
-    strGet = "?" + strGet.substring(0, strGet.length - 1);
-    console.log(strGet);
-    
-    input.on("change", input, function (e) {
-        var target = e.target;
-        changeStrGet (target);
-    });
-   $("body").on("mouseup", function (e) {
-    var div = $(".js-mouseup");
-        if (!div.is(e.target) && div.has(e.target).length === 0) {
-            var index = $(".ui-state-active").index(".ui-slider-handle");
-           changeStrGet( "#" + $(".slider-handle-c").eq(index).attr("id") );
-        }
-   });
-    function debounce(func, wait, immediate) {
-        var timeout;
-        return function() {
-            var context = this, args = arguments;
-            var later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            var callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    };
-</script>
