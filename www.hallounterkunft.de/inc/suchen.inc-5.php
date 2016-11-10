@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 <?php
 
 
@@ -109,7 +108,7 @@ else $sql .= " ORDER BY datum DESC";
 
 
 
-$pageTitel = 'Unterkünfte';
+$pageTitel = 'UnterkÃ¼nfte';
 if($ortName!="") $pageTitel .= ' in '.$ortName;
 else $pageTitel .= ' suchen';
 if($dt[land]!="DE" && $dt[land]!="") $pageTitel .= ', '.countrycode($dt[land]);
@@ -162,20 +161,20 @@ echo '</select>
 <div class=input-group><span class=input-group-addon><img src=images/ico_users.png width=16 height=16 align=absmiddle></span>
 <select name="anzgaeste" class="form-control" style="padding-left:8px;">
 <option value=1'; if($anzgaeste==1) echo ' selected'; echo '>1 Gast</option>
-<option value=2'; if($anzgaeste==2 || $anzgaeste=="") echo ' selected'; echo '>2 Gäste</option>
-<option value=3'; if($anzgaeste==3) echo ' selected'; echo '>3 Gäste</option>
-<option value=4'; if($anzgaeste==4) echo ' selected'; echo '>4 Gäste</option>
-<option value=5'; if($anzgaeste==5) echo ' selected'; echo '>5 Gäste</option>
-<option value=6'; if($anzgaeste==6) echo ' selected'; echo '>6 Gäste</option>
-<option value=7'; if($anzgaeste==7) echo ' selected'; echo '>7 Gäste</option>
-<option value=8'; if($anzgaeste==8) echo ' selected'; echo '>8 Gäste</option>
-<option value=9'; if($anzgaeste==9) echo ' selected'; echo '>9 Gäste</option>
-<option value=10'; if($anzgaeste==10) echo ' selected'; echo '>10 Gäste</option>
-<option value=11'; if($anzgaeste==11) echo ' selected'; echo '>11 Gäste</option>
-<option value=12'; if($anzgaeste==12) echo ' selected'; echo '>12 Gäste</option>
-<option value=13'; if($anzgaeste==13) echo ' selected'; echo '>13 Gäste</option>
-<option value=14'; if($anzgaeste==14) echo ' selected'; echo '>14 Gäste</option>
-<option value=15'; if($anzgaeste==15) echo ' selected'; echo '>15+ Gäste</option>
+<option value=2'; if($anzgaeste==2 || $anzgaeste=="") echo ' selected'; echo '>2 GÃ¤ste</option>
+<option value=3'; if($anzgaeste==3) echo ' selected'; echo '>3 GÃ¤ste</option>
+<option value=4'; if($anzgaeste==4) echo ' selected'; echo '>4 GÃ¤ste</option>
+<option value=5'; if($anzgaeste==5) echo ' selected'; echo '>5 GÃ¤ste</option>
+<option value=6'; if($anzgaeste==6) echo ' selected'; echo '>6 GÃ¤ste</option>
+<option value=7'; if($anzgaeste==7) echo ' selected'; echo '>7 GÃ¤ste</option>
+<option value=8'; if($anzgaeste==8) echo ' selected'; echo '>8 GÃ¤ste</option>
+<option value=9'; if($anzgaeste==9) echo ' selected'; echo '>9 GÃ¤ste</option>
+<option value=10'; if($anzgaeste==10) echo ' selected'; echo '>10 GÃ¤ste</option>
+<option value=11'; if($anzgaeste==11) echo ' selected'; echo '>11 GÃ¤ste</option>
+<option value=12'; if($anzgaeste==12) echo ' selected'; echo '>12 GÃ¤ste</option>
+<option value=13'; if($anzgaeste==13) echo ' selected'; echo '>13 GÃ¤ste</option>
+<option value=14'; if($anzgaeste==14) echo ' selected'; echo '>14 GÃ¤ste</option>
+<option value=15'; if($anzgaeste==15) echo ' selected'; echo '>15+ GÃ¤ste</option>
 </select>
 </div>
 </div>
@@ -186,7 +185,7 @@ echo '</select>
 
 
 <script>
-'; if($coredata['waehrung']=="EUR") $waehrung = '€'; else $waehrung = $coredata['waehrung']; echo '
+'; if($coredata['waehrung']=="EUR") $waehrung = 'â‚¬'; else $waehrung = $coredata['waehrung']; echo '
 $(function() {
     $( "#slider-preis" ).slider({
         range: true,
@@ -277,7 +276,7 @@ $(function() {
 </div>
 
 <div style="margin-bottom:20px;margin-left:9px;margin-right:8px;">
-<label for="groessebereich" style="width:120px;">Fläche:</label>
+<label for="groessebereich" style="width:120px;">FlÃ¤che:</label>
 <input type="text" id="groessebereich" style="width:150px;border: 0; color: #f6931f; font-weight: bold; text-align:right;">
 <input type="hidden" class="slider-handle-c" id="groessemin" name="groessemin" value='.$groessemin.'>
 <input type="hidden" class="slider-handle-c" id="groessemax" name="groessemax" value='.$groessemax.'>
@@ -316,7 +315,6 @@ echo '
     $getukcounter = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql);
     $ukcounter=mysql_num_rows($getukcounter);
     $getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",".$limiter);
-
     $aaanz=$ukcounter;
     $ap1=$sza+1;
     $dsanz=$ap1+$limiter;
@@ -363,14 +361,13 @@ echo '
     @media all and (max-width: 480px) {
     #centerdiv{text-align:center !important;}
     }
-    </style><div class="row"><div class="col-lg-6 col-sm-6" style="font-weight:bold;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' Unterkünfte'; echo ' gefunden</div><div class="col-lg-6 col-sm-6" style="text-align:right;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select name=order class=small>
+    </style><div class="row"><div class="col-lg-6 col-sm-6" style="font-weight:bold;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' UnterkÃ¼nfte'; echo ' gefunden</div><div class="col-lg-6 col-sm-6" style="text-align:right;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select name=order class=small>
 
-    <option value=datum>Neueste Unterkünfte zuerst
+    <option value=datum>Neueste UnterkÃ¼nfte zuerst
     <option value=preis'; if($order=="preis") echo ' selected'; echo '>Niedrigster Preis zuerst
-    <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>Grösste Fläche zuerst
+    <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>GrÃ¶sste FlÃ¤che zuerst
 
     </select></form></div></td></tr></thead>';
-
     while($unterkunft=mysql_fetch_array($getuk)) {
     echo '<tr><td><div class="row"><div class="col-lg-3 col-sm-4 col-6" style="margin-right:-15px;"><div style="max-width:260px;max-height:100px;overflow:hidden;box-shadow: 2px 2px 2px #ddd;" class="bigroundcorners"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">';
 
@@ -414,7 +411,6 @@ echo '
 
     </div></div></td></tr>';
     }
-
     $dataForMap = array();
     $getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",10000");
     while($unterkunft=mysql_fetch_array($getuk)) {
@@ -669,8 +665,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
             height: 130px;
             background: white;
             padding: 15px;
-            position:relative;
-            border-radius: 10px;
+          position:relative;
         }
         .map-mark__triangl {
           width: 0;
@@ -681,7 +676,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
         }
         .map-mark__triangl_active {
             border: 20px solid transparent;
-            border-top: 20px solid white;
+            border-top: 20px solid white; 
         }
         .map-mark__price {
           font-size: 14px;
@@ -717,53 +712,26 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
       line-height: 19px;
       color:#9d9b9c;
       text-align: left;
-      font-size: 14px;
     }
     .map-mark__city, .map-mark__user-name {
       color:#427db5;
-      font-weight: bold;
     }
     .map-mark__price_active {
       color: #353535;
       position: absolute;
       bottom: 15px;
       right: 15px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .map-mark__reiting {
-        float: left;
-        margin-top: 5px;
-        margin-left: -45px;
     }
      .map-mark__user-img {
       float:left;
     }
-     .map-mark__title-link {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .map-mark__container_active {
-        position: absolute;
-        left: -173px;
-        top: -50px;
-        z-index: 999999;
-    }
-    .map-mark_close {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        font-weight: bold;
-        font-size: 20px;
-    }
-    .labels {
-        overflow: visible !important;
-    }
+        .map-mark__container {
+        }
         .gm-style > div > div:first-child {
           z-index: 10000 !important;
         }
         div#map_can {
-              width: 100%;
+              width: 600px;
               height: 400px;
         }
     /*end custom-google*/
@@ -780,10 +748,9 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
                 initMapOnce();
             }, 250);
         });
-
         var dataForMapJSON = <?echo $dataForMapJSON;?>;
         console.log(dataForMapJSON);
-            
+
            function initializeMap () {
             var mapCan = document.getElementById("map_can");
             var options = {
@@ -793,7 +760,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
             var map = new google.maps.Map(mapCan, options);
             var geocoder = new google.maps.Geocoder();
             var mapCordsLoc = [];
-            function codeAddress(location, price, ortName, ortUrl, strFetchArt, srcApartment, url, title, userName, userAvtar, userUrl, userReiting){
+            function codeAddress(location, price){
                  geocoder.geocode( { 'address': location}, function(results, status) {
                      if (status == google.maps.GeocoderStatus.OK) {
                         console.log(price);
@@ -803,7 +770,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
                            map: map,
                            draggable: false,
                            raiseOnDrag: false,
-                           labelContent: '<div class="map-mark__container" onclick=\'$(this).fadeOut(); $(this).next().fadeIn(500);\'><div class="map-mark__markers"><span class="map-mark__price">' + price + '</span></div><div class="map-mark__triangl"></div></div><div class="map-mark__container_active" style="display: none;"><div class="map-mark__markers map-mark__markers_active"><div class="map-mark__wr-img"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link"><img src="' + srcApartment + '" alt="" class="map-mark__img" /></a></div><div class="map-mark__wr-data"><div class="map-mark__title"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link">'+  title +'</a></div><div class="map-mark__wr-user"><a href="'+ userUrl +'" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link"><img src="' + userAvtar + '" alt="" class="map-mark__user-img" /></a><div class="map-mark__user-text">' + strFetchArt + ' in <a href="' + ortUrl + '" onclick="location.href =\'' + ortUrl + '\'"  class="map-mark__city-link"><span class="map-mark__city">'+ ortName +'</span></a> von <span class="map-mark__user-name"><a href="' + userUrl + '" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link">'+ userName +'</a></span></div></div><div class="map-mark__reiting">' + userReiting + '</div></div><span class="map-mark__price map-mark__price_active">' + price + '</span><span onclick="$(this).closest(\'.map-mark__container_active\').fadeOut(600); $(this).closest(\'.map-mark__container_active\').prev().fadeIn(600);";  class="map-mark_close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span></div><div class="map-mark__triangl map-mark__triangl_active"></div></div></div>',
+                           labelContent: '<div class="map-mark__container"><div><div class="map-mark__markers"><span class="map-mark__price">' + price + '</span></div><div class="map-mark__triangl"></div></div><div><div class="map-mark__markers map-mark__markers_active"><div class="map-mark__wr-img"><img src="http://www.sunhome.ru/UsersGallery/Cards/prazdnik_den_zemli_kartinka.jpg" alt="" class="map-mark__img" /></div><div class="map-mark__wr-data"><div class="map-mark__title">sdssdsd</div><div class="map-mark__wr-user"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQpyJMXrMR3f5XRtfz37TUOmfNf_GwzPllZuoZSprHO8cb9V8q7YNIxe_oD" alt="" class="map-mark__user-img" /><div class="map-mark__user-text">sdsdsd <span class="map-mark__city">Ddsdasd</span> sdsdd dfdfdfdf <span class="map-mark__user-name">sdsd</span></div></div></div><span class="map-mark__price map-mark__price_active">' + price + '</span></div><div class="map-mark__triangl map-mark__triangl_active"></div></div></div>',
                            labelAnchor: new google.maps.Point(200, 40),
                            labelClass: "labels", // the CSS class for the label 
                            labelInBackground: false
@@ -815,17 +782,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
              for (var i = 0; i < dataForMapJSON.length; i++) {
                 var address = dataForMapJSON[i].strasse + ", " + dataForMapJSON[i].ortName;
                 var price = dataForMapJSON[i].price;
-                var ortName = dataForMapJSON[i].ortName;
-                var ortUrl = dataForMapJSON[i].ortUrl;
-                var strFetchArt = dataForMapJSON[i].strFetchArt;
-                var srcApartment = dataForMapJSON[i].srcApartment;
-                var title = dataForMapJSON[i].title;
-                var url = dataForMapJSON[i].url;
-                var userName = dataForMapJSON[i].userName;
-                var userAvtar = dataForMapJSON[i].userAvtar;
-                var userUrl = dataForMapJSON[i].userUrl;
-                var userReiting = dataForMapJSON[i].userReiting;
-                codeAddress(address, price, ortName, ortUrl, strFetchArt, srcApartment, url, title, userName, userAvtar, userUrl, userReiting);
+                codeAddress(address, price);
              }
 
              
@@ -835,7 +792,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
                      latlngbounds.extend(mapCordsLoc[i]);
                 }
                 map.setCenter( latlngbounds.getCenter(), map.fitBounds(latlngbounds));
-             }, 1200);
+             }, 1000);
 
            }
     });

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>HTML5 API. Демонстрация: использование Яндекс.Map API</title>
+  <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+  <script type="text/javascript">
+    ymaps.ready(init);
+
+    function init() {
+      if (navigator.geolocation) {
+        getLocation();
+      } else {
+        document.getElementById("map").innerHTML = "Geolocation API не поддерживается в вашем браузере";
+      }
+    }
+
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var map = new ymaps.Map("map", {
+          center: [latitude, longitude],
+          zoom: 15
+        });
+
+        map.controls
+          .add('zoomControl')
+          .add('typeSelector')
+          .add('mapTools');
+
+        var place = new ymaps.Placemark(
+                  [latitude, longitude], {}, {
+            preset: "twirl#redIcon"
+          }
+        );
+        // Добавляем метку в коллекцию
+        map.geoObjects.add(place);
+      });
+    }
+  </script>
+  <style>
+    #map {
+      margin: 0 auto;
+      height: 500px;
+      width: 800px;
+      border: 10px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+</body>
+
+</html>

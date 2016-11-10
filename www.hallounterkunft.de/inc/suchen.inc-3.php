@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 <?php
 
 
@@ -109,7 +108,7 @@ else $sql .= " ORDER BY datum DESC";
 
 
 
-$pageTitel = 'Unterkünfte';
+$pageTitel = 'UnterkÃ¼nfte';
 if($ortName!="") $pageTitel .= ' in '.$ortName;
 else $pageTitel .= ' suchen';
 if($dt[land]!="DE" && $dt[land]!="") $pageTitel .= ', '.countrycode($dt[land]);
@@ -162,20 +161,20 @@ echo '</select>
 <div class=input-group><span class=input-group-addon><img src=images/ico_users.png width=16 height=16 align=absmiddle></span>
 <select name="anzgaeste" class="form-control" style="padding-left:8px;">
 <option value=1'; if($anzgaeste==1) echo ' selected'; echo '>1 Gast</option>
-<option value=2'; if($anzgaeste==2 || $anzgaeste=="") echo ' selected'; echo '>2 Gäste</option>
-<option value=3'; if($anzgaeste==3) echo ' selected'; echo '>3 Gäste</option>
-<option value=4'; if($anzgaeste==4) echo ' selected'; echo '>4 Gäste</option>
-<option value=5'; if($anzgaeste==5) echo ' selected'; echo '>5 Gäste</option>
-<option value=6'; if($anzgaeste==6) echo ' selected'; echo '>6 Gäste</option>
-<option value=7'; if($anzgaeste==7) echo ' selected'; echo '>7 Gäste</option>
-<option value=8'; if($anzgaeste==8) echo ' selected'; echo '>8 Gäste</option>
-<option value=9'; if($anzgaeste==9) echo ' selected'; echo '>9 Gäste</option>
-<option value=10'; if($anzgaeste==10) echo ' selected'; echo '>10 Gäste</option>
-<option value=11'; if($anzgaeste==11) echo ' selected'; echo '>11 Gäste</option>
-<option value=12'; if($anzgaeste==12) echo ' selected'; echo '>12 Gäste</option>
-<option value=13'; if($anzgaeste==13) echo ' selected'; echo '>13 Gäste</option>
-<option value=14'; if($anzgaeste==14) echo ' selected'; echo '>14 Gäste</option>
-<option value=15'; if($anzgaeste==15) echo ' selected'; echo '>15+ Gäste</option>
+<option value=2'; if($anzgaeste==2 || $anzgaeste=="") echo ' selected'; echo '>2 GÃ¤ste</option>
+<option value=3'; if($anzgaeste==3) echo ' selected'; echo '>3 GÃ¤ste</option>
+<option value=4'; if($anzgaeste==4) echo ' selected'; echo '>4 GÃ¤ste</option>
+<option value=5'; if($anzgaeste==5) echo ' selected'; echo '>5 GÃ¤ste</option>
+<option value=6'; if($anzgaeste==6) echo ' selected'; echo '>6 GÃ¤ste</option>
+<option value=7'; if($anzgaeste==7) echo ' selected'; echo '>7 GÃ¤ste</option>
+<option value=8'; if($anzgaeste==8) echo ' selected'; echo '>8 GÃ¤ste</option>
+<option value=9'; if($anzgaeste==9) echo ' selected'; echo '>9 GÃ¤ste</option>
+<option value=10'; if($anzgaeste==10) echo ' selected'; echo '>10 GÃ¤ste</option>
+<option value=11'; if($anzgaeste==11) echo ' selected'; echo '>11 GÃ¤ste</option>
+<option value=12'; if($anzgaeste==12) echo ' selected'; echo '>12 GÃ¤ste</option>
+<option value=13'; if($anzgaeste==13) echo ' selected'; echo '>13 GÃ¤ste</option>
+<option value=14'; if($anzgaeste==14) echo ' selected'; echo '>14 GÃ¤ste</option>
+<option value=15'; if($anzgaeste==15) echo ' selected'; echo '>15+ GÃ¤ste</option>
 </select>
 </div>
 </div>
@@ -186,7 +185,7 @@ echo '</select>
 
 
 <script>
-'; if($coredata['waehrung']=="EUR") $waehrung = '€'; else $waehrung = $coredata['waehrung']; echo '
+'; if($coredata['waehrung']=="EUR") $waehrung = 'â‚¬'; else $waehrung = $coredata['waehrung']; echo '
 $(function() {
     $( "#slider-preis" ).slider({
         range: true,
@@ -277,7 +276,7 @@ $(function() {
 </div>
 
 <div style="margin-bottom:20px;margin-left:9px;margin-right:8px;">
-<label for="groessebereich" style="width:120px;">Fläche:</label>
+<label for="groessebereich" style="width:120px;">FlÃ¤che:</label>
 <input type="text" id="groessebereich" style="width:150px;border: 0; color: #f6931f; font-weight: bold; text-align:right;">
 <input type="hidden" class="slider-handle-c" id="groessemin" name="groessemin" value='.$groessemin.'>
 <input type="hidden" class="slider-handle-c" id="groessemax" name="groessemax" value='.$groessemax.'>
@@ -303,7 +302,7 @@ $(function() {
 echo '
 <ul class="nav nav-tabs" id="myTabs" role="tablist">
     <li role="presentation" class="active presentation-custom"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Listenansicht</a></li>
-    <li role="presentation" class="presentation-custom js-map-inicialize"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Kartenansicht</a></li>
+    <li role="presentation" class="presentation-custom"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Kartenansicht</a></li>
 </ul>
 <div class="tab-content" id="myTabContent"> 
     <div class="tab-pane fade active in" role="tabpanel" id="home" aria-labelledby="home-tab">';
@@ -363,11 +362,11 @@ echo '
     @media all and (max-width: 480px) {
     #centerdiv{text-align:center !important;}
     }
-    </style><div class="row"><div class="col-lg-6 col-sm-6" style="font-weight:bold;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' Unterkünfte'; echo ' gefunden</div><div class="col-lg-6 col-sm-6" style="text-align:right;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select name=order class=small>
+    </style><div class="row"><div class="col-lg-6 col-sm-6" style="font-weight:bold;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' UnterkÃ¼nfte'; echo ' gefunden</div><div class="col-lg-6 col-sm-6" style="text-align:right;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select name=order class=small>
 
-    <option value=datum>Neueste Unterkünfte zuerst
+    <option value=datum>Neueste UnterkÃ¼nfte zuerst
     <option value=preis'; if($order=="preis") echo ' selected'; echo '>Niedrigster Preis zuerst
-    <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>Grösste Fläche zuerst
+    <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>GrÃ¶sste FlÃ¤che zuerst
 
     </select></form></div></td></tr></thead>';
 
@@ -415,64 +414,6 @@ echo '
     </div></div></td></tr>';
     }
 
-    $dataForMap = array();
-    $getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",10000");
-    while($unterkunft=mysql_fetch_array($getuk)) {
-        $getgastgeber=mysql_query("SELECT * FROM ".$dbx."_user WHERE id='".$unterkunft[user]."'");
-        $gastgeber = mysql_fetch_array($getgastgeber);
-
-        $apartment =  array("url"=>genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])));
-
-        if(file_exists("fotos/".$unterkunft[id]."_1_t.jpg")==1) $apartment["srcApartment"] = 'fotos/'.$unterkunft[id].'_1_t.jpg';
-        elseif(file_exists("fotos/".$unterkunft[id]."_1_t.png")==1) $apartment["srcApartment"] =  'fotos/'.$unterkunft[id].'_1_t.png';
-        else $apartment["srcApartment"] = 'fotos/leer.gif';
-        $apartment["title"] = $unterkunft[titel];
-       
-        $strFetchArt = "";
-        $getArten = mysql_query("SELECT * FROM ".$dbx."_data_art ORDER BY id");
-        while($fetchArt = mysql_fetch_array($getArten)) {
-        if($unterkunft[art]==$fetchArt[id]) $strFetchArt = $strFetchArt." ".$fetchArt[art];
-        }
-        $apartment["strFetchArt"] = $strFetchArt;
-        $apartment["ortUrl"] = genUrl('suchen',urlencode($unterkunft[ort]));
-        $apartment["ortName"] = $unterkunft[ort];
-        $price = $unterkunft[preis_nacht].',00 ';
-        if($coredata['waehrung']=="EUR") $price = $price.'&euro;'; else $price = $price.$coredata['waehrung'];
-        $apartment["price"] = $price;
-        $apartment["duration"] = "pro Nacht";
-        $apartment["strasse"] = $unterkunft[strasse];
-
-        if($coredata['user']=="user") $urlUsername=$gastgeber[user]; else $urlUsername=$gastgeber[id];
-        $apartment["userUrl"] = genURL('user',$urlUsername);
-
-        if($coredata['user']=="user") $apartment["userName"] = ucfirst($gastgeber[user]);
-        else $apartment["userName"] = $gastgeber[vorname].' '.$gastgeber[nachname];
-
-        $strAvtar = "avatar/";
-        if(file_exists("avatar/".$unterkunft[user]."_t.jpg")==1) $strAvtar = $strAvtar.$unterkunft[user].'_t.jpg';
-        elseif(file_exists("avatar/".$unterkunft[user]."_t.png")==1) $strAvtar = $strAvtar.$unterkunft[user].'_t.png';
-        else $strAvtar = $strAvtar.'user.gif';
-        $apartment["userAvtar"] = $strAvtar;
-
-        $userReiting = "";
-        if($bewertung>0.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>1.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>1.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>2.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>2.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>3.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>3.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>4.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>4.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        $apartment["userReiting"] = $userReiting;
-        array_push($dataForMap, $apartment);
-    }
-    $dataForMapJSON = json_encode($dataForMap);
     echo '</table>';
 
 
@@ -510,7 +451,7 @@ echo "</ul></div>";
 
     }
 echo '</div> 
-    <div class="tab-pane fade" role="tabpanel" id="profile" aria-labelledby="profile-tab"><div id="map_can"></div></div>
+    <div class="tab-pane fade" role="tabpanel" id="profile" aria-labelledby="profile-tab"><div id="map"></div></div>
 </div>';
 
 
@@ -602,18 +543,6 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
             if (callNow) func.apply(context, args);
         };
     };
-    function once(fn, context) { 
-        var result;
-
-        return function() { 
-            if(fn) {
-                result = fn.apply(context || this, arguments);
-                fn = null;
-            }
-
-            return result;
-        };
-    }
 </script>
 <script>
     $('#myTabs a').click(function (e) {
@@ -621,8 +550,34 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
       $(this).tab('show')
     })
 </script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGXA6JxQnZULY0mJoM9QlF7hfhg48vMws&callback=initMap">
+    </script>
+<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js"></script>
+<script>
+    //start custom-google*/
+    var d = document.getElementById("map");
+          var options = {
+              zoom:1,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+    var map = new google.maps.Map(d, options);
+    var geocoder = new google.maps.Geocoder();
+    function codeAddress(location){
+         geocoder.geocode( { 'address':location}, function(results, status) {
+             if (status == google.maps.GeocoderStatus.OK) {
+                 map.setCenter(results[0].geometry.location);
+                 var marker = new google.maps.Marker({ 
+                     position: results[0].geometry.location,
+                     map: map
+                 });
+             } else {  
+                alert('Geocode was not successful for the following reason: ' + status)}; 
+         });
+     }
+     codeAddress("Berlin");
 
-
+    //end custom-google*/
+</script>
 <style>
     .presentation-custom {
         border: 1px solid #ddd;
@@ -649,195 +604,37 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
         padding: 5px 15px;
     }
     /*start custom-google*/
-        [src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"] {
-          display: none !important;
-        }
-        .map-mark__markers {
-          width: 55px;
-          height: 35px;
-          margin: auto;
-          background: #ff6600;
-          border-radius: 5px;
-          text-align: center;
-          vertical-align: 55px;
-          line-height: 35px;
-        }
-        .map-mark__markers_active {
-            box-sizing: border-box;
-            margin-top: -55px;
-            width: 400px;
-            height: 130px;
-            background: white;
-            padding: 15px;
-            position:relative;
-            border-radius: 10px;
-        }
-        .map-mark__triangl {
-          width: 0;
-          margin: auto;
-          margin-top: -1px;
-          border: 10px solid transparent;
-          border-top: 10px solid #ff6600; 
-        }
-        .map-mark__triangl_active {
-            border: 20px solid transparent;
-            border-top: 20px solid white;
-        }
-        .map-mark__price {
-          font-size: 14px;
-          font-weight: 600;
-          color: white;
-          word-spacing: -1px;
-        }
-        .map-mark__img {
-          width: 100%;
-          height: 100%;
-          border-radius: 15px;
-        }
-        .map-mark__wr-img {
-          width: 130px;
-          height: 100px;
-          margin-right: 15px;
-          display:inline-block;
-          float:left;
-        }
-
-    .map-mark__title {
-      line-height: 25px;
-      text-align:left;
-      color: #427db5;
+    [src="http://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"] {
+      display: none !important;
     }
-    .map-mark__user-img {
-      border-radius: 50%;
-      width:45px;
-      height: 45px;
-      margin-right: 5px;
+    .map_markers {
+      width: 55px;
+      height: 35px;
+      background: #ff6600;
+      border-radius: 5px;
+      text-align: center;
+      vertical-align: 55px;
+      line-height: 35px;
     }
-    .map-mark__user-text {
-      line-height: 19px;
-      color:#9d9b9c;
-      text-align: left;
-      font-size: 14px;
+    .map_triangl {
+      width: 0;
+      margin: auto;
+      margin-top: -1px;
+      border: 10px solid transparent;
+      border-top: 10px solid #ff6600; 
     }
-    .map-mark__city, .map-mark__user-name {
-      color:#427db5;
-      font-weight: bold;
-    }
-    .map-mark__price_active {
-      color: #353535;
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .map-mark__reiting {
-        float: left;
-        margin-top: 5px;
-        margin-left: -45px;
-    }
-     .map-mark__user-img {
-      float:left;
-    }
-     .map-mark__title-link {
+    .map_price {
       font-size: 18px;
       font-weight: bold;
+      color: white;
     }
-    .map-mark__container_active {
-        position: absolute;
-        left: -173px;
-        top: -50px;
-        z-index: 999999;
+    .gm-style > div > div:first-child {
+      z-index: 10000 !important;
     }
-    .map-mark_close {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        font-weight: bold;
-        font-size: 20px;
-    }
-    .labels {
-        overflow: visible !important;
-    }
-        .gm-style > div > div:first-child {
-          z-index: 10000 !important;
-        }
-        div#map_can {
-              width: 100%;
+    div#map {
+              width: 600px;
               height: 400px;
-        }
+              border: 1px solid black;
+          }
     /*end custom-google*/
 </style>
-
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyDGXA6JxQnZULY0mJoM9QlF7hfhg48vMws"></script>
-<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js"></script>
-<script>
-    //start custom-google*/
-    $(document).ready(function () {
-        var initMapOnce = once(initializeMap);
-        $(".js-map-inicialize").click(function () {
-            setTimeout(function () {
-                initMapOnce();
-            }, 250);
-        });
-
-        var dataForMapJSON = <?echo $dataForMapJSON;?>;
-        console.log(dataForMapJSON);
-            
-           function initializeMap () {
-            var mapCan = document.getElementById("map_can");
-            var options = {
-                'zoom':15,
-                'mapTypeId': google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(mapCan, options);
-            var geocoder = new google.maps.Geocoder();
-            var mapCordsLoc = [];
-            function codeAddress(location, price, ortName, ortUrl, strFetchArt, srcApartment, url, title, userName, userAvtar, userUrl, userReiting){
-                 geocoder.geocode( { 'address': location}, function(results, status) {
-                     if (status == google.maps.GeocoderStatus.OK) {
-                        console.log(price);
-                        mapCordsLoc.push(results[0].geometry.location);
-                         var marker = new MarkerWithLabel({
-                           position: results[0].geometry.location,
-                           map: map,
-                           draggable: false,
-                           raiseOnDrag: false,
-                           labelContent: '<div class="map-mark__container" onclick=\'$(this).fadeOut(); $(this).next().fadeIn(500);\'><div class="map-mark__markers"><span class="map-mark__price">' + price + '</span></div><div class="map-mark__triangl"></div></div><div class="map-mark__container_active" style="display: none;"><div class="map-mark__markers map-mark__markers_active"><div class="map-mark__wr-img"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link"><img src="' + srcApartment + '" alt="" class="map-mark__img" /></a></div><div class="map-mark__wr-data"><div class="map-mark__title"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link">'+  title +'</a></div><div class="map-mark__wr-user"><a href="'+ userUrl +'" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link"><img src="' + userAvtar + '" alt="" class="map-mark__user-img" /></a><div class="map-mark__user-text">' + strFetchArt + ' in <a href="' + ortUrl + '" onclick="location.href =\'' + ortUrl + '\'"  class="map-mark__city-link"><span class="map-mark__city">'+ ortName +'</span></a> von <span class="map-mark__user-name"><a href="' + userUrl + '" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link">'+ userName +'</a></span></div></div><div class="map-mark__reiting">' + userReiting + '</div></div><span class="map-mark__price map-mark__price_active">' + price + '</span><span onclick="$(this).closest(\'.map-mark__container_active\').fadeOut(600); $(this).closest(\'.map-mark__container_active\').prev().fadeIn(600);";  class="map-mark_close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span></div><div class="map-mark__triangl map-mark__triangl_active"></div></div></div>',
-                           labelAnchor: new google.maps.Point(200, 40),
-                           labelClass: "labels", // the CSS class for the label 
-                           labelInBackground: false
-                         });
-                     } else {  
-                        console.log('Geocode was not successful for the following reason: ' + status)}; 
-                 });
-             }
-             for (var i = 0; i < dataForMapJSON.length; i++) {
-                var address = dataForMapJSON[i].strasse + ", " + dataForMapJSON[i].ortName;
-                var price = dataForMapJSON[i].price;
-                var ortName = dataForMapJSON[i].ortName;
-                var ortUrl = dataForMapJSON[i].ortUrl;
-                var strFetchArt = dataForMapJSON[i].strFetchArt;
-                var srcApartment = dataForMapJSON[i].srcApartment;
-                var title = dataForMapJSON[i].title;
-                var url = dataForMapJSON[i].url;
-                var userName = dataForMapJSON[i].userName;
-                var userAvtar = dataForMapJSON[i].userAvtar;
-                var userUrl = dataForMapJSON[i].userUrl;
-                var userReiting = dataForMapJSON[i].userReiting;
-                codeAddress(address, price, ortName, ortUrl, strFetchArt, srcApartment, url, title, userName, userAvtar, userUrl, userReiting);
-             }
-
-             
-             setTimeout(function () {
-                var latlngbounds = new google.maps.LatLngBounds();
-                for ( var i=0; i<mapCordsLoc.length; i++ ){
-                     latlngbounds.extend(mapCordsLoc[i]);
-                }
-                map.setCenter( latlngbounds.getCenter(), map.fitBounds(latlngbounds));
-             }, 1200);
-
-           }
-    });
-    //end custom-google*/
-</script>
