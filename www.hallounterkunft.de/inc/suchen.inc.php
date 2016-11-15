@@ -1,6 +1,10 @@
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+<div class="search-nav-mobile">
+    <div class="search-nav-mobile__item search-nav-mobile__results js-search-nav-mobile__results" style="display:none;">Ergebnisse</div>
+    <div class="search-nav-mobile__item search-nav-mobile__map js-search-nav-mobile__map">Karte</div>
+    <div class="search-nav-mobile__item search-nav-mobile__filter js-search-nav-mobile__filter">Filter</div>
+</div>
 <?php
-
 
 
 $art=htmlspecialchars(stripslashes($_POST[art]));
@@ -120,7 +124,7 @@ $DO_TITEL=$pageTitel;
 
 
 echo '<div class="row">';
-echo '<div class="col-lg-4 col-sm-5">
+echo '<div class="col-lg-4 col-sm-5 saerch">
 
 <form action="index.php" method="get" class="form-horizontal js-get-param"><input type="hidden" name="d" value="suchen">
 
@@ -283,6 +287,9 @@ $(function() {
 <input type="hidden" class="slider-handle-c" id="groessemax" name="groessemax" value='.$groessemax.'>
 <div id="slider-groesse"></div>
 </div>
+<div style="margin-bottom:30px;">
+<input type="submit" onclick="return false;"  value="Suchen" class="btn btn-default js-button-search button-search" style="width:100%">
+</div>
 
 
 
@@ -301,11 +308,17 @@ $(function() {
 <div class="col-lg-8 col-sm-7">';
 
 echo '
-<ul class="nav nav-tabs" id="myTabs" role="tablist">
+<div class="row" style="padding: 0 15px;;"><div class="" style="font-weight:bold; float: left; padding-right: 10px;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' Unterkünfte'; echo ' gefunden</div><div class="" style="text-align:left ; padding-left: 0; float: left;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select name=order class=small>
+
+    <option value=datum>Neueste Unterkünfte zuerst
+    <option value=preis'; if($order=="preis") echo ' selected'; echo '>Niedrigster Preis zuerst
+    <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>Grösste Fläche zuerst
+
+    </select></form></div><ul style="float: right; margin-bottom: 15px" class="nav nav-tabs nav-tabs-custom" id="myTabs" role="tablist">
     <li role="presentation" class="active presentation-custom"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Listenansicht</a></li>
     <li role="presentation" class="presentation-custom js-map-inicialize"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Kartenansicht</a></li>
-</ul>
-<div class="tab-content" id="myTabContent"> 
+</ul></div>
+<div class="tab-content js-tab-content" id="myTabContent"> 
     <div class="tab-pane fade active in" role="tabpanel" id="home" aria-labelledby="home-tab">';
     $limiter=8;
     $seite=$_GET[seite];
@@ -363,13 +376,7 @@ echo '
     @media all and (max-width: 480px) {
     #centerdiv{text-align:center !important;}
     }
-    </style><div class="row"><div class="col-lg-6 col-sm-6" style="font-weight:bold;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' Unterkünfte'; echo ' gefunden</div><div class="col-lg-6 col-sm-6" style="text-align:right;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select name=order class=small>
-
-    <option value=datum>Neueste Unterkünfte zuerst
-    <option value=preis'; if($order=="preis") echo ' selected'; echo '>Niedrigster Preis zuerst
-    <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>Grösste Fläche zuerst
-
-    </select></form></div></td></tr></thead>';
+    </style></td></tr></thead>';
 
     while($unterkunft=mysql_fetch_array($getuk)) {
     echo '<tr><td><div class="row"><div class="col-lg-3 col-sm-4 col-6" style="margin-right:-15px;"><div style="max-width:260px;max-height:100px;overflow:hidden;box-shadow: 2px 2px 2px #ddd;" class="bigroundcorners"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">';
@@ -648,8 +655,15 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
     .nav>li.presentation-custom>a {
         padding: 5px 15px;
     }
+    .nav-tabs-custom {
+        border: none;
+        float: right;
+    }
+    .wr-top-pl {
+
+    }
     /*start custom-google*/
-        [src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"] {
+        [src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"], [src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi_hdpi.png"] {
           display: none !important;
         }
         .map-mark__markers {
@@ -751,7 +765,7 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
     }
     .map-mark_close {
         position: absolute;
-        top: 5px;
+        top: 0px;
         right: 10px;
         font-weight: bold;
         font-size: 20px;
@@ -766,7 +780,53 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
               width: 100%;
               height: 400px;
         }
+        .search-nav-mobile {
+            display: none;
+            width: 300px;
+            bottom: 0;
+            position: fixed;
+            left: 50%;
+            margin-left: -150px;
+            text-align: center;
+            background: #3a3c3c;
+            color: white;
+            font-weight: bold;
+            z-index: 100000;
+        }
+        .search-nav-mobile__item {
+            width: 50%;
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .search-nav-mobile__filter {
+            border-left: 1px solid white;
+        }
+        .button-search {
+            display: none;
+        }
     /*end custom-google*/
+
+    /*start mobile*/
+        @media only screen and (max-width: 768px) {
+            .saerch {
+                display: none;
+            }
+            .nav.nav-tabs.nav-tabs-custom {
+                display: none;
+            }
+            .search-nav-mobile {
+                display: block;
+            }
+
+            .button-search {
+                display: block;
+            }
+
+        }
+    /*end mobile*/
+
 </style>
 
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyDGXA6JxQnZULY0mJoM9QlF7hfhg48vMws"></script>
@@ -803,8 +863,8 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
                            map: map,
                            draggable: false,
                            raiseOnDrag: false,
-                           labelContent: '<div class="map-mark__container" onclick=\'$(this).fadeOut(); $(this).next().fadeIn(500);\'><div class="map-mark__markers"><span class="map-mark__price">' + price + '</span></div><div class="map-mark__triangl"></div></div><div class="map-mark__container_active" style="display: none;"><div class="map-mark__markers map-mark__markers_active"><div class="map-mark__wr-img"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link"><img src="' + srcApartment + '" alt="" class="map-mark__img" /></a></div><div class="map-mark__wr-data"><div class="map-mark__title"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link">'+  title +'</a></div><div class="map-mark__wr-user"><a href="'+ userUrl +'" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link"><img src="' + userAvtar + '" alt="" class="map-mark__user-img" /></a><div class="map-mark__user-text">' + strFetchArt + ' in <a href="' + ortUrl + '" onclick="location.href =\'' + ortUrl + '\'"  class="map-mark__city-link"><span class="map-mark__city">'+ ortName +'</span></a> von <span class="map-mark__user-name"><a href="' + userUrl + '" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link">'+ userName +'</a></span></div></div><div class="map-mark__reiting">' + userReiting + '</div></div><span class="map-mark__price map-mark__price_active">' + price + '</span><span onclick="$(this).closest(\'.map-mark__container_active\').fadeOut(600); $(this).closest(\'.map-mark__container_active\').prev().fadeIn(600);";  class="map-mark_close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span></div><div class="map-mark__triangl map-mark__triangl_active"></div></div></div>',
-                           labelAnchor: new google.maps.Point(200, 40),
+                           labelContent: '<div class="map-mark__container" onclick=\'$(this).fadeOut(); $(this).next().fadeIn(500);\'><div class="map-mark__markers"><span class="map-mark__price">' + price + '</span></div><div class="map-mark__triangl"></div></div><div class="map-mark__container_active" style="display: none;"><div class="map-mark__markers map-mark__markers_active"><div class="map-mark__wr-img"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link"><img src="' + srcApartment + '" alt="" class="map-mark__img" /></a></div><div class="map-mark__wr-data"><div class="map-mark__title"><a href="'+ url +'" onclick="location.href =\'' + url + '\'" class="map-mark__title-link">'+  title +'</a></div><div class="map-mark__wr-user"><a href="'+ userUrl +'" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link"><img src="' + userAvtar + '" alt="" class="map-mark__user-img" /></a><div class="map-mark__user-text">' + strFetchArt + ' in <a href="' + ortUrl + '" onclick="location.href =\'' + ortUrl + '\'"  class="map-mark__city-link"><span class="map-mark__city">'+ ortName +'</span></a> von <span class="map-mark__user-name"><a href="' + userUrl + '" onclick="location.href =\'' + userUrl + '\'" class="map-mark__user-link">'+ userName +'</a></span></div></div><div class="map-mark__reiting">' + userReiting + '</div></div><span class="map-mark__price map-mark__price_active">' + price + '</span><span onclick="$(this).closest(\'.map-mark__container_active\').fadeOut(600); $(this).closest(\'.map-mark__container_active\').prev().fadeIn(600);";  class="map-mark_close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div class="map-mark__triangl map-mark__triangl_active"></div></div></div>',
+                           labelAnchor: new google.maps.Point(0, 0),
                            labelClass: "labels", // the CSS class for the label 
                            labelInBackground: false
                          });
@@ -839,5 +899,37 @@ function getAjaxData(file, strGet, setAjaxDataSelec) {
 
            }
     });
+    $(".js-tab-content").on("click", function (e) {
+        $(".map-mark__container_active").fadeOut(600);
+        $('.map-mark__container').fadeIn(600);
+    });
     //end custom-google*/
+
+    //start mobile-google*/
+        $(".js-search-nav-mobile__filter").click(function () {
+            $(".saerch").show();
+            $(".js-ajax-data").hide();
+            $(".search-nav-mobile").hide();
+
+        });
+        $(".js-search-nav-mobile__map").click(function () {
+            $(".saerch").hide();
+            $(".js-ajax-data").show();
+            $("#profile-tab").click();
+            $(this).hide();
+            $(".js-search-nav-mobile__results").show();
+        });
+        $(".js-search-nav-mobile__results").click(function () {
+            $(".saerch").hide();
+            $(".js-ajax-data").show();
+            $("#home-tab").click();
+            $(this).hide();
+            $(".js-search-nav-mobile__map").show();
+        });
+        $(".js-button-search").click(function () {
+            $(".js-ajax-data").show();
+            $(".saerch").hide();
+            $(".search-nav-mobile").show();
+        });
+    //end mobile-google*/
 </script>
