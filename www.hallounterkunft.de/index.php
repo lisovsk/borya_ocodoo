@@ -3,6 +3,12 @@
 // error_reporting(E_ALL ^ E_NOTICE);
 ini_set("memory_limit","80M");
 date_default_timezone_set("Europe/Berlin");
+
+if (file_exists(__DIR__ . '/install.php')) {
+    include(__DIR__ . '/install.php');
+    exit();
+}
+
 include_once("class/core.class.php");
 
 ob_start();

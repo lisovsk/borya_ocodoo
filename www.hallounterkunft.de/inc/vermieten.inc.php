@@ -1,5 +1,49 @@
 <?php
-
+function geocode($address){
+ 
+    // url encode the address
+    $address = urlencode($address);
+     
+    // google map geocode api url
+    $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+ 
+    // get the json response
+    $resp_json = file_get_contents($url);
+     
+    // decode the json
+    $resp = json_decode($resp_json, true);
+ 
+    // response status will be 'OK', if able to geocode given address 
+    if($resp['status']=='OK'){
+ 
+        // get the important data
+        $lati = $resp['results'][0]['geometry']['location']['lat'];
+        $longi = $resp['results'][0]['geometry']['location']['lng'];
+        $formatted_address = $resp['results'][0]['formatted_address'];
+         
+        // verify if data is complete
+        if($lati && $longi && $formatted_address){
+         
+            // put the data in the array
+            $data_arr = array();            
+             
+            array_push(
+                $data_arr, 
+                    $lati, 
+                    $longi, 
+                    $formatted_address
+                );
+             
+            return $data_arr;
+             
+        }else{
+            return false;
+        }
+         
+    }else{
+        return false;
+    }
+}
 
 if($lg=="ok") {
 
@@ -22,9 +66,23 @@ $anz_schlafzimmer=htmlspecialchars(stripslashes($_POST[anz_schlafzimmer]));
 $anz_badezimmer=htmlspecialchars(stripslashes($_POST[anz_badezimmer]));
 $art_badezimmer=htmlspecialchars(stripslashes($_POST[art_badezimmer]));
 
+$address = $strasse.', '.$ort;
+$data_geo = geocode($address);
+
+if ($data_geo) {
+	$latitude = $data_geo[0];
+	$longitude = $data_geo[1];
+} else {
+	$latitude = false;
+	$longitude = false;
+}
+// var_dump($latitude);
+// var_dump($longitude);
+
 if($_POST[o]=="k") {
 
 if($titel=="") echo '<div class="alert alert-danger"><b>Ups!</b> Bitte das Feld "Überschrift" ausfüllen.</div>';
+elseif(latitude == false || $longitude == false) echo '<div class="alert alert-danger"><b>Ups!</b>Koordinaten der Wohnungen nicht lesen(ein falscher Wert auf die Strasse oder die Ort).</div>';
 elseif(strlen($titel)>50) echo '<div class="alert alert-danger"><b>Ups!</b> Die Überschrift ist zu lang. Bitte maximal 50 Zeichen.</div>';
 elseif($_FILES['foto1']['name']=="" && $_FILES['foto2']['name']=="" && $_FILES['foto3']['name']=="") echo '<div class="alert alert-danger"><b>Ups!</b> Fügen Sie bitte mindestens 1 Foto hinzu.</div>';
 elseif($preis_nacht=="") echo '<div class="alert alert-danger"><b>Ups!</b> Bitte den Preis pro Nacht angeben.</div>';
@@ -42,7 +100,7 @@ $ausstattung .= "|".$fetchAusstattung."|";
 } else $ausstattung="";
 
 
-mysql_query("INSERT INTO ".$dbx."_unterkunft (user,titel,art,strasse,plz,ort,land,preis_nacht,anz_schlafzimmer,anz_badezimmer,art_badezimmer,max_gaeste,groesse,cont,regeln,ausstattung,datum,status) VALUES ('".$usrd[id]."','".addslashes($titel)."','".$art."','".addslashes($strasse)."','".addslashes($plz)."','".addslashes($ort)."','".$land."','".addslashes($preis_nacht)."','".$anz_schlafzimmer."','".$anz_badezimmer."','".$art_badezimmer."','".$max_gaeste."','".addslashes($groesse)."','".addslashes($cont)."','".addslashes($regeln)."','".$ausstattung."','".time()."','ok')");
+mysql_query("INSERT INTO ".$dbx."_unterkunft (user,titel,art,strasse,plz,ort,land,preis_nacht,anz_schlafzimmer,anz_badezimmer,art_badezimmer,max_gaeste,groesse,cont,regeln,ausstattung,datum,latitude,longitude,status) VALUES ('".$usrd[id]."','".addslashes($titel)."','".$art."','".addslashes($strasse)."','".addslashes($plz)."','".addslashes($ort)."','".$land."','".addslashes($preis_nacht)."','".$anz_schlafzimmer."','".$anz_badezimmer."','".$art_badezimmer."','".$max_gaeste."','".addslashes($groesse)."','".addslashes($cont)."','".addslashes($regeln)."','".$ausstattung."','".time()."','".$latitude."','".$longitude."','ok')");
 $uid=mysql_insert_id();
 
 

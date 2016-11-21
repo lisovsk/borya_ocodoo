@@ -21,13 +21,17 @@
 
 <div class="row">
 
-<div class="col-12" style="margin-bottom:10px;">
+<div class="col-6" style="margin-bottom:10px;">
 <div class=input-group><span class=input-group-addon><img src=images/ico_marker.png width=16 height=16 align=absmiddle></span>
 <input type="text" name="ort" class="form-control" placeholder="Wo geht es hin?" style="font-size:18px;font-weight:bold;">
 </div>
 </div>
+<div class="col-6" style="margin-bottom:10px;">
+	<? include("components/php/date-picker.php"); ?>
+</div>
 
-</div><div class="row">
+</div>
+<div class="row">
 
 <div class="col-lg-6 col-sm-12" style="margin-bottom:10px;">
 <div class=input-group><span class=input-group-addon><img src=images/ico_unterkunft.png width=16 height=16 align=absmiddle></span>

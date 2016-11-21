@@ -4,6 +4,7 @@ include("core.class.inc.php");
 mysql_connect("$dbserver","$dbuser","$dbpass");
 mysql_select_db($dbdata);
 
+
 $art=htmlspecialchars(stripslashes($_POST[art]));
 if(!$art) $art=htmlspecialchars(stripslashes($_GET[art]));
 
@@ -194,190 +195,121 @@ $(function() {
     $( "#groessebereich" ).val( $( "#slider-groesse" ).slider( "values", 0 ) + " bis " + $( "#slider-groesse" ).slider( "values", 1 ) + " m2" );
 });
 </script>
+<div class="col-lg-8 col-sm-7 js-mouseup">';
+$limiter=8;
+$seite=$_GET[seite];
+if(!$seite || $seite==0) $sza=0;
+else $sza = $seite * $limiter;
+$acc=0;
+$getukcounter = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql);
+$ukcounter=mysql_num_rows($getukcounter);
+$getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",".$limiter);
 
-<div class="col-lg-8 col-sm-7">';
-
-    $limiter=8;
-    $seite=$_GET[seite];
-    if(!$seite || $seite==0) $sza=0;
-    else $sza = $seite * $limiter;
-    $acc=0;
-
-    $getukcounter = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql);
-    $ukcounter=mysql_num_rows($getukcounter);
-    $getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",".$limiter);
-
-    $aaanz=$ukcounter;
-    $ap1=$sza+1;
-    $dsanz=$ap1+$limiter;
-    if($aaanz<$dsanz) $dsanz=$aaanz;
-    $ans=ceil($aaanz/$limiter);
-    $aks=$seite+1;
-    $next=$seite+1;
-    $prev=$seite-1;
-
-
-    echo '
-    <div class="row" style="padding: 0 15px;;"><div class="" style="font-weight:bold; float: left; padding-right: 10px;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' Unterkünfte'; echo ' gefunden</div><div class="" style="text-align:left ; padding-left: 0; float: left;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input  type=hidden name=groessemax value="'.$groessemax.'"><select '; if($_GET[view]=="map") {echo 'style="display:none;"';}  echo ' name=order class=small>
-
-        <option value=datum>Neueste Unterkünfte zuerst
-        <option value=preis'; if($order=="preis") echo ' selected'; echo '>Niedrigster Preis zuerst
-        <option value=groesse'; if($order=="groesse") echo ' selected'; echo '>Grösste Fläche zuerst
-
-        </select></form></div><ul style="float: right; margin-bottom: 15px" class="nav nav-tabs nav-tabs-custom" id="myTabs" role="tablist">
-        <li role="presentation"'; if($_GET[view]=="items") {echo 'class="active presentation-custom"';} else {echo 'class="presentation-custom"';} echo '><a href="#home" name="view" value="items" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Listenansicht</a></li>
-        <li role="presentation"'; if($_GET[view]=="map") {echo 'class="active presentation-custom js-map-inicialize"';} else {echo 'class="presentation-custom js-map-inicialize"';}  echo'><a href="#profile" name="view" value="map" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Kartenansicht</a></li>
-    </ul></div>
-    <div class="tab-content js-tab-content" id="myTabContent"> 
-        <div '; if($_GET[view]=="items") {echo 'class="tab-pane fade active in"';} else {echo 'class="tab-pane fade"';} echo ' role="tabpanel" id="home" aria-labelledby="home-tab">';
-
-
-
-    if($ortunbekannt=="ja" && $ukcounter==0) {
-    echo '<div class="alert alert-danger"><b>Ups!</b> Der Ort "'.ucfirst($ort).'" ist uns unbekannt.</div>';
-    $exOrt1 = explode(' ',$ort);
-    $exOrt2 = explode('-',$ort);
-    $altOrte = mysql_query("SELECT ort,land FROM ".$dbx."_geodata WHERE ort LIKE '".$ort."%' OR ort LIKE '".$exOrt1[0]."%' OR ort LIKE '".$exOrt2[0]."%' ORDER BY einwohner DESC LIMIT 0,10");
-    if(mysql_num_rows($altOrte)>3) {
-    echo '<div style="padding:15px;margin-top:-20px;">Meinten Sie vielleicht einen der folgenden Orte?</div>';
-    while($fetchAltOrte=mysql_fetch_array($altOrte)) {
-    echo '<div style="padding-top:4px;"><img src=images/flaggen/'.strtolower($fetchAltOrte[land]).'.gif width=18 height=12 align=absmiddle> <a href="'.genUrl('suchen',urlencode($fetchAltOrte[ort])).'">'.$fetchAltOrte[ort].'</a></div>';
-    }
-    }
-    else {
-    $altOrte = mysql_query("SELECT ort,land FROM ".$dbx."_geodata WHERE ort LIKE '".$ort."%' OR ort LIKE '".$exOrt1[0]."%' OR ort LIKE '".$exOrt2[0]."%' OR ort LIKE '".$ort[0].$ort[1].$ort[2]."%' ORDER BY einwohner DESC LIMIT 0,10");
-    if(mysql_num_rows($altOrte)!=0) {
-    echo '<div style="padding:15px;margin-top:-20px;">Meinten Sie vielleicht einen der folgenden Orte?</div>';
-    while($fetchAltOrte=mysql_fetch_array($altOrte)) {
-    echo '<div style="padding-top:4px;"><img src=images/flaggen/'.strtolower($fetchAltOrte[land]).'.gif width=18 height=12 align=absmiddle> <a href="'.genUrl('suchen',urlencode($fetchAltOrte[ort])).'">'.$fetchAltOrte[ort].'</a></div>';
-    }
-    }
-    }
-    }
+$aaanz=$ukcounter;
+$ap1=$sza+1;
+$dsanz=$ap1+$limiter;
+if($aaanz<$dsanz) $dsanz=$aaanz;
+$ans=ceil($aaanz/$limiter);
+$aks=$seite+1;
+$next=$seite+1;
+$prev=$seite-1;
 
 
 
 
 
-    elseif($ukcounter==0) echo '<div class="alert alert-danger"><b>Ups!</b> Leider keine passende Unterkunft gefunden.</div>';
-    else {
-    echo '<table class="table table-hover"><thead><tr><td colspan=3><style>
-    @media all and (max-width: 480px) {
-    #centerdiv{text-align:center !important;}
-    }
-    </style></td></tr></thead>';
-
-    while($unterkunft=mysql_fetch_array($getuk)) {
-    echo '<tr><td><div class="row"><div class="col-lg-3 col-sm-4 col-6" style="margin-right:-15px;"><div style="max-width:260px;max-height:100px;overflow:hidden;box-shadow: 2px 2px 2px #ddd;" class="bigroundcorners"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">';
-
-    if(file_exists("../../fotos/".$unterkunft[id]."_1_t.jpg")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.jpg" border=0 style="width:100%;">';
-    elseif(file_exists("../../fotos/".$unterkunft[id]."_1_t.png")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.png" border=0 style="width:100%;">';
-
-    else echo '<img src="fotos/leer.gif" border=0 style="width:100%;">';
-    echo '</a></div></div><div class="col-lg-7 col-sm-5 col-6">
-
-    <style>
-    #titeldiv{padding-bottom:5px;font-size:18px;font-weight:bold;line-height:22px;}
-    @media all and (max-width: 480px) {
-    #titeldiv{font-size:14px;}
-    }
-    </style>
-    <div id="titeldiv"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">'.$unterkunft[titel].'</a></div>
-
-    <div style="padding-bottom:5px;color:#888;">';
-
-    $getArten = mysql_query("SELECT * FROM ".$dbx."_data_art ORDER BY id");
-    while($fetchArt = mysql_fetch_array($getArten)) {
-    if($unterkunft[art]==$fetchArt[id]) echo $fetchArt[art];
-    }
-
-    echo ' &middot; <a href="'.genUrl('suchen',urlencode($unterkunft[ort])).'">'.$unterkunft[ort].'</a></div>
-    <div style="padding-bottom:5px;color:#888;">
-
-    </div>
-
-    </div>
-
-    <style>
-    #preisdiv{margin-left:15px;text-align:right;}
-    @media all and (max-width: 480px) {
-    #preisdiv{text-align:center;}
-    }
-    </style>
-    <div class="col-lg-2 col-sm-3 col-12" id="preisdiv">
-
-    <span style="font-weight:bold;font-size:20px;letter-spacing:-1px;">'.$unterkunft[preis_nacht].',00 '; if($coredata['waehrung']=="EUR") echo '&euro;'; else echo $coredata['waehrung']; echo '</span><br>pro Nacht
-
-    </div></div></td></tr>';
-    }
-
-    $dataForMap = array();
-    $getuk = mysql_query("SELECT * FROM ".$dbx."_unterkunft WHERE status='ok'".$sql." LIMIT ".$sza.",10000");
-    while($unterkunft=mysql_fetch_array($getuk)) {
-        $getgastgeber=mysql_query("SELECT * FROM ".$dbx."_user WHERE id='".$unterkunft[user]."'");
-        $gastgeber = mysql_fetch_array($getgastgeber);
-
-        $apartment =  array("url"=>genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])));
-
-        if(file_exists("../../fotos/".$unterkunft[id]."_1_t.jpg")==1) $apartment["srcApartment"] = 'fotos/'.$unterkunft[id].'_1_t.jpg';
-        elseif(file_exists("../../fotos/".$unterkunft[id]."_1_t.png")==1) $apartment["srcApartment"] =  'fotos/'.$unterkunft[id].'_1_t.png';
-        else $apartment["srcApartment"] = 'fotos/leer.gif';
-        $apartment["title"] = $unterkunft[titel];
-       
-        $strFetchArt = "";
-        $getArten = mysql_query("SELECT * FROM ".$dbx."_data_art ORDER BY id");
-        while($fetchArt = mysql_fetch_array($getArten)) {
-        if($unterkunft[art]==$fetchArt[id]) $strFetchArt = $strFetchArt." ".$fetchArt[art];
-        }
-        $apartment["strFetchArt"] = $strFetchArt;
-        $apartment["ortUrl"] = genUrl('suchen',urlencode($unterkunft[ort]));
-        $apartment["ortName"] = $unterkunft[ort];
-        $price = $unterkunft[preis_nacht].',00 ';
-        if($coredata['waehrung']=="EUR") $price = $price.'&euro;'; else $price = $price.$coredata['waehrung'];
-        $apartment["price"] = $price;
-        $apartment["duration"] = "pro Nacht";
-        $apartment["strasse"] = $unterkunft[strasse];
-
-        if($coredata['user']=="user") $urlUsername=$gastgeber[user]; else $urlUsername=$gastgeber[id];
-        $apartment["userUrl"] = genURL('user',$urlUsername);
-
-        if($coredata['user']=="user") $apartment["userName"] = ucfirst($gastgeber[user]);
-        else $apartment["userName"] = $gastgeber[vorname].' '.$gastgeber[nachname];
-
-        $strAvtar = "avatar/";
-        if(file_exists("../../avatar/".$unterkunft[user]."_t.jpg")==1) $strAvtar = $strAvtar.$unterkunft[user].'_t.jpg';
-        elseif(file_exists("../../avatar/".$unterkunft[user]."_t.png")==1) $strAvtar = $strAvtar.$unterkunft[user].'_t.png';
-        else $strAvtar = $strAvtar.'user.gif';
-        $apartment["userAvtar"] = $strAvtar;
-
-        $userReiting = "";
-        if($bewertung>0.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>1.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>1.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>2.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>2.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>3.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>3.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        if($bewertung>4.9) $userReiting = $userReiting.'<img src=images/staron.png width=16 height=16>';
-        elseif($bewertung>4.1) $userReiting = $userReiting.'<img src=images/starhalf.png width=16 height=16>';
-        else $userReiting = $userReiting.'<img src=images/staroff.png width=16 height=16>';
-        $apartment["userReiting"] = $userReiting;
-
-        $apartment["latitude"] = $unterkunft[latitude];
-        $apartment["longitude"] = $unterkunft[longitude];
-        array_push($dataForMap, $apartment);
-    }
-    $dataForMapJSON = json_encode($dataForMap);
-    echo '</table>';
+if($ortunbekannt=="ja" && $ukcounter==0) {
+echo '<div class="alert alert-danger"><b>Ups!</b> Der Ort "'.ucfirst($ort).'" ist uns unbekannt.</div>';
+$exOrt1 = explode(' ',$ort);
+$exOrt2 = explode('-',$ort);
+$altOrte = mysql_query("SELECT ort,land FROM ".$dbx."_geodata WHERE ort LIKE '".$ort."%' OR ort LIKE '".$exOrt1[0]."%' OR ort LIKE '".$exOrt2[0]."%' ORDER BY einwohner DESC LIMIT 0,10");
+if(mysql_num_rows($altOrte)>3) {
+echo '<div style="padding:15px;margin-top:-20px;">Meinten Sie vielleicht einen der folgenden Orte?';
+while($fetchAltOrte=mysql_fetch_array($altOrte)) {
+echo '<div style="padding-top:4px;"><img src=images/flaggen/'.strtolower($fetchAltOrte[land]).'.gif width=18 height=12 align=absmiddle> <a href="'.genUrl('suchen',urlencode($fetchAltOrte[ort])).'">'.$fetchAltOrte[ort].'</a></div>';
+}
+}
+else {
+$altOrte = mysql_query("SELECT ort,land FROM ".$dbx."_geodata WHERE ort LIKE '".$ort."%' OR ort LIKE '".$exOrt1[0]."%' OR ort LIKE '".$exOrt2[0]."%' OR ort LIKE '".$ort[0].$ort[1].$ort[2]."%' ORDER BY einwohner DESC LIMIT 0,10");
+if(mysql_num_rows($altOrte)!=0) {
+echo '<div style="padding:15px;margin-top:-20px;">Meinten Sie vielleicht einen der folgenden Orte?';
+while($fetchAltOrte=mysql_fetch_array($altOrte)) {
+echo '<div style="padding-top:4px;"><img src=images/flaggen/'.strtolower($fetchAltOrte[land]).'.gif width=18 height=12 align=absmiddle> <a href="'.genUrl('suchen',urlencode($fetchAltOrte[ort])).'">'.$fetchAltOrte[ort].'</a></div>';
+}
+}
+}
+echo '</div>';
+}
 
 
 
 
 
+elseif($ukcounter==0) echo '<div class="alert alert-danger"><b>Ups!</b> Leider keine passende Unterkunft gefunden.</div>';
+else {
+echo '<table class="table table-hover"><thead><tr><td colspan=3><style>
+@media all and (max-width: 480px) {
+#centerdiv{text-align:center !important;}
+}
+</style><div class="row"><div class="col-lg-6 col-sm-6" style="font-weight:bold;" id="centerdiv">'; if($ukcounter==1) echo 'Eine Unterkunft'; else echo $ukcounter.' Unterkünfte'; echo ' gefunden</div><div class="col-lg-6 col-sm-6" style="text-align:right;" id="centerdiv"><form action=index.php method=get><input type=hidden name=d value="suchen"><input type=hidden name=ort value="'.$ort.'"><input type=hidden name=umkreis value="'.$umkreis.'"><input type=hidden name=art value="'.$art.'"><input type=hidden name=anzgaeste value="'.$anzgaeste.'"><input type=hidden name=preismin value="'.$preismin.'"><input type=hidden name=preismax value="'.$preismax.'"><input type=hidden name=badezimmermin value="'.$badezimmermin.'"><input type=hidden name=badezimmermax value="'.$badezimmermax.'"><input type=hidden name=schlafzimmermin value="'.$schlafzimmermin.'"><input type=hidden name=schlafzimmermax value="'.$schlafzimmermax.'"><input type=hidden name=groessemin value="'.$groessemin.'"><input type=hidden name=groessemax value="'.$groessemax.'"><select  name=order class=small>
+
+<option value=datum>Neueste Unterkünfte zuerst
+<option value=preis'; if($order=="preis") echo ' selected'; echo '>Niedrigster Preis zuerst
+<option value=groesse'; if($order=="groesse") echo ' selected'; echo '>Grösste Fläche zuerst
+
+</select></form></div></td></tr></thead>';
+
+while($unterkunft=mysql_fetch_array($getuk)) {
+echo '<tr><td><div class="row"><div class="col-lg-3 col-sm-4 col-6" style="margin-right:-15px;"><div style="max-width:260px;max-height:100px;overflow:hidden;box-shadow: 2px 2px 2px #ddd;" class="bigroundcorners"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">';
+
+if(file_exists("../../fotos/".$unterkunft[id]."_1_t.jpg")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.jpg" border=0 style="width:100%;">';
+elseif(file_exists("../../fotos/".$unterkunft[id]."_1_t.png")==1) echo '<img src="fotos/'.$unterkunft[id].'_1_t.png" border=0 style="width:100%;">';
+
+else echo '<img src="fotos/leer.gif" border=0 style="width:100%;">';
+echo '</a></div></div><div class="col-lg-7 col-sm-5 col-6">
+
+<style>
+#titeldiv{padding-bottom:5px;font-size:18px;font-weight:bold;line-height:22px;}
+@media all and (max-width: 480px) {
+#titeldiv{font-size:14px;}
+}
+</style>
+<div id="titeldiv"><a href="'.genURL('unterkunft',$unterkunft[id],urlseotext($unterkunft[titel])).'">'.$unterkunft[titel].'</a></div>
+
+<div style="padding-bottom:5px;color:#888;">';
+
+$getArten = mysql_query("SELECT * FROM ".$dbx."_data_art ORDER BY id");
+while($fetchArt = mysql_fetch_array($getArten)) {
+if($unterkunft[art]==$fetchArt[id]) echo $fetchArt[art];
+}
+
+echo ' &middot; <a href="'.genUrl('suchen',urlencode($unterkunft[ort])).'">'.$unterkunft[ort].'</a></div>
+<div style="padding-bottom:5px;color:#888;">
+
+</div>
+
+</div>
+
+<style>
+#preisdiv{margin-left:15px;text-align:right;}
+@media all and (max-width: 480px) {
+#preisdiv{text-align:center;}
+}
+</style>
+<div class="col-lg-2 col-sm-3 col-12" id="preisdiv">
+
+<span style="font-weight:bold;font-size:20px;letter-spacing:-1px;">'.$unterkunft[preis_nacht].',00 '; if($coredata['waehrung']=="EUR") echo '&euro;'; else echo $coredata['waehrung']; echo '</span><br>pro Nacht
+
+</div></div></td></tr>';
+}
+
+echo '</table>';
+
+
+
+
+
+ 
 function pageLink($i,$stat="link") {
 
 $dp=$i+1; global $coredata; global $d; global $ort; global $umkreis; global $art; global $anzgaeste; global $preismin; global $preismax; global $schlafzimmermax; global $schlafzimmermin; global $badezimmermax; global $badezimmermin; global $groessemin; global $groessemax;
@@ -407,43 +339,11 @@ echo "</ul></div>";
 
 
 
-    }
-echo '</div> 
-    <div '; if($_GET[view]=="map") {echo 'class="tab-pane fade active in"';} else {echo 'class="tab-pane fade"';} echo ' role="tabpanel" id="profile" aria-labelledby="profile-tab">';
-    echo '<div id="map_can"></div>';
-    echo '</div>';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo '</div>';
-if($_GET[view]=="map") echo '<script> $(document).ready(function () { flagViewMap=true; });  </script>'; ?>
-
+}
+?>
 <script>
     $(".small").on("change", function (e) {
         var target = e.target;
         changeStrGet (target);
     });
-    view = <? if($_GET[view]) echo '"'.$_GET[view].'"'; else echo "undefined";?>;
-    dataForMapJSON = <?if($dataForMapJSON) echo $dataForMapJSON; else echo "{}";?>;
-    if (dataForMapJSON.length == undefined) {
-        var dataError = $("#home").html();
-        $("#profile").html(dataError);
-    }
 </script>

@@ -12,7 +12,7 @@
 $dbserver = "127.0.0.1:3306";   // Datenbank-Server
 $dbuser = "mysql";   // Benutzername (für die MySQL-Datenbank)
 $dbpass = "mysql";   // Passwort (für die MySQL-Datenbank)
-$dbdata = "hallounterkunft";   // Name der Datenbank
+$dbdata = "hallounterkunft2";   // Name der Datenbank
 $dbx="hallounterkunft";   // Tabellen-Prefix (im Normalfall nicht ändern)
 
 

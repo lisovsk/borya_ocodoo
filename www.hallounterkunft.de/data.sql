@@ -125,6 +125,8 @@ CREATE TABLE `hallounterkunft_unterkunft` (
   `regeln` text NOT NULL,
   `ausstattung` text NOT NULL,
   `status` varchar(3) NOT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
   `datum` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 );

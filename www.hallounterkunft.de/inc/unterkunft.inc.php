@@ -312,28 +312,28 @@ echo '<div style="margin-bottom:30px;"><form action=index.php method=post><input
 
 <br><div style="padding:5px;background-color:#eee;margin-bottom:5px;" class=smallroundcorners><b>Buchungsanfrage</b></div>
 
-<div class="col-5" style="padding:15px 0px; !important;"><b>Your stay time:</b></div>
-<div class="col-12" style="padding:0px !important;"><div class=input-group><span class="input-group-addon"><img src=images/ico_datum.png width=16 height=16></span><input style="font-weight: bold;" type="text" name="daterange" value="'.$dateMorgen. ' - ' .$dateDreiTage.'" class="form-control js-daterange" /></div></div>
-</div>
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<div class="col-5" style="padding:15px 0px !important;"><b>Your stay time:</b></div>';
+echo '<div class="col-12" style="padding:0px !important; margin-bottom:-10px">';
+include("components/php/date-picker.php");
+echo '</div>';
+echo '</div>
+
 <input type="hidden" name="datumvon" id="datumvon" value="'.$dateMorgen.'" class=form-control>
 <input type="hidden" name="datumbis" id="datumbis" value="'.$dateDreiTage.'" class=form-control>
+<style>
+/*===== custom daterangepicker =====*/
+body .daterangepicker.opensright:before {
+  left: 95%;
+}
+body .daterangepicker.opensright:after {
+  left: calc(95% + 1px);
+}
+.daterangepicker.dropdown-menu {
+  right: 205px !important;
+  left: 525px !important;
+}
+</style>
 <script type="text/javascript">
-var today = moment();
-$(function() {
-    $(\'input[name="daterange"]\').daterangepicker({
-    "startDate": "'.$dateMorgen.'",
-    "endDate": "'.$dateDreiTage.'",
-    "minDate": "'.$dateMorgen.'",
-    "maxDate": moment(today).add(1, "year"),
-    "locale": {
-      format: "DD.MM.YYYY"
-    }
-});
-});
 $(".js-daterange").on("change", function () {
   var dateFirst, dateSecond, daterangeStr, daterangeArr;
   daterangeStr = $(this).val();
